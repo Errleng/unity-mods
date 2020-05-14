@@ -3,12 +3,10 @@ using BepInEx;
 using Failbetter.Core.DataInterfaces;
 using Failbetter.Core.Provider;
 using HarmonyLib;
-using Skyless.Assets.Code.Skyless.Game.Config;
 using Skyless.Assets.Code.Skyless.Game.Services;
 using Skyless.Assets.Code.Skyless.UI.Controllers;
 using Skyless.Assets.Code.Skyless.UI.Interfaces;
 using Skyless.Assets.Code.Skyless.UI.Presenters.HUD;
-using Skyless.Game.Data;
 using UniRx;
 using UnityEngine;
 
@@ -23,7 +21,7 @@ namespace SunlessSkiesMod
         private const string HealKey = ";"; // save the player from dying of attrition
         private const string ZoomInKey = "="; // cinematic mode makes physics wacky
         private const string ZoomOutKey = "-"; // cinematic mode makes physics wacky
-        private const float MovementMultiplier = 16f;
+        private const float MovementMultiplier = 20f;
         private const float CinematicModeAngularThrustFactor = 100000f; // cinematic mode makes physics wacky
 
         private void Awake()
@@ -105,8 +103,8 @@ namespace SunlessSkiesMod
                         .Where(_ => Input.GetKeyDown(HealKey))
                         .Subscribe(x =>
                         {
-                            SkylessCharacter currentCharacter = __instance._characterService.CurrentCharacter;
-                            IWellKnownQualityProvider wellKnownQualityProvider = __instance._wellKnownQualityProvider;
+                            var currentCharacter = __instance._characterService.CurrentCharacter;
+                            var wellKnownQualityProvider = __instance._wellKnownQualityProvider;
                             currentCharacter.AcquireQualityAtExplicitLevel(wellKnownQualityProvider.Hull(),
                                 currentCharacter.GetEffectiveQualityLevel(wellKnownQualityProvider.MaxHull()));
                             currentCharacter.AcquireQualityAtExplicitLevel(wellKnownQualityProvider.Crew(),
@@ -142,13 +140,9 @@ namespace SunlessSkiesMod
                         .Subscribe(x =>
                         {
                             if (_footerHidden)
-                            {
                                 _footerController.DisplayFooter();
-                            }
                             else
-                            {
                                 _footerController.HideFooterObject();
-                            }
 
                             _footerHidden = !_footerHidden;
                         });
@@ -197,8 +191,8 @@ namespace SunlessSkiesMod
                 if (!_isPatched)
                 {
                     _isPatched = true;
-                    Traverse playerCameraTraverse = Traverse.Create(__instance);
-                    Traverse minZoomTraverse = playerCameraTraverse.Field("_configuration").Field("MinZoom");
+                    var playerCameraTraverse = Traverse.Create(__instance);
+                    var minZoomTraverse = playerCameraTraverse.Field("_configuration").Field("MinZoom");
                     _minZoom = minZoomTraverse.GetValue<float>();
                     Observable.EveryUpdate()
                         .Where(_ => Input.GetKeyDown(ZoomInKey))
