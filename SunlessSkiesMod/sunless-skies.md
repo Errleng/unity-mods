@@ -34,12 +34,12 @@ select x).Subscribe(delegate(ControlVelocity y)
 ```C#
 public bool speedup = false;
 
-public void ExtraPlayerHotkeys() { 
+public void ExtraPlayerHotkeys() {
     this._disposables.Add((from x in this._playerInput.WhenKeyDown where x.Option == ControlOption.Cruise
     select x).Subscribe(delegate(ControlVelocity y)
     {
         float multiplier = 2f;
-        if (speedup) { 
+        if (speedup) {
             this.MaxSpeed *= 2;
             this.ForwardThrust *= 2;
             this.BackwardThrust *= 2;
