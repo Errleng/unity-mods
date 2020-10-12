@@ -2,60 +2,108 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnityEngine;
 using BepInEx;
+using BepInEx.Logging;
 using HarmonyLib;
-using HarmonyLib.Tools;
 
 namespace EnterTheGungeonMod
 {
     [BepInPlugin("org.bepinex.plugins.enterthegungeonplugin", "Enter The Gungeon Plugin", "1.0.0.0")]
     public class EnterTheGungeonPlugin : BaseUnityPlugin
     {
+        static ManualLogSource logger;
+
         private void Awake()
         {
-            Logger.LogInfo("Enter The Gungeon plugin loaded!");
-            HarmonyLib.Tools.Logger.ChannelFilter = HarmonyLib.Tools.Logger.LogChannel.Info;
-            HarmonyFileLog.Enabled = true;
-            HarmonyFileLog.FileWriterPath = "BepInEx/harmonyLogOutput.log";
+            logger = Logger;
+            logger.LogInfo("Enter The Gungeon plugin loaded!");
             Harmony.CreateAndPatchAll(typeof(Patch));
         }
-    }
 
-    public class Patch
-    {
-        [HarmonyPatch(typeof(PlayerConsumables))]
-        [HarmonyPatch("InfiniteKeys", MethodType.Setter)]
-        [HarmonyPostfix]
-        static void Postfix(PlayerConsumables __instance)
+        public class Patch
         {
-            __instance.InfiniteKeys = true;
-        }
+            static bool infiniteKeys = false;
+            static bool currencyIncreaseOnly = false;
+            static bool currencyIncreaseDouble = true;
 
-
-        [HarmonyPatch(typeof(PlayerConsumables))]
-        [HarmonyPatch("Currency", MethodType.Setter)]
-        [HarmonyPrefix]
-        static bool Prefix(int value, PlayerConsumables __instance)
-        {
-            Debug.Log("Loaded ETGPlugin PlayerConsumables Currency setter");
-            if (value > __instance.Currency)
+            private static Dictionary<string, bool> firstRun = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase)
             {
+                { "InfiniteKeys", true },
+                { "Currency", true },
+                { "Start", true }
+            };
+
+            [HarmonyPatch(typeof(PlayerConsumables), "InfiniteKeys", MethodType.Setter)]
+            [HarmonyPostfix]
+            static void Postfix(bool ___m_infiniteKeys)
+            {
+                if (firstRun["InfiniteKeys"])
+                {
+                    logger.LogInfo("Loaded ETGPlugin PlayerConsumables InfiniteKeys setter");
+                    firstRun["InfiniteKeys"] = false;
+                }
+
+                if (infiniteKeys)
+                {
+                    ___m_infiniteKeys = true;
+                }
+            }
+
+
+            [HarmonyPatch(typeof(PlayerConsumables), "Currency", MethodType.Setter)]
+            [HarmonyPrefix]
+            static bool Prefix(ref int value, int ___m_currency)
+            {
+                if (firstRun["Currency"])
+                {
+                    logger.LogInfo("Loaded ETGPlugin PlayerConsumables Currency setter");
+                    firstRun["Currency"] = false;
+                }
+
+                // only allow increases
+                if (currencyIncreaseOnly)
+                {
+                    if (value > ___m_currency)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                // double increases
+                if (currencyIncreaseDouble)
+                {
+                    if (value > ___m_currency)
+                    {
+                        value += (value - ___m_currency);
+                    }
+                    return true;
+                }
+
                 return true;
             }
-            else
+
+
+            [HarmonyPatch(typeof(PlayerController), "Start")]
+            [HarmonyPostfix]
+            static void Prefix(PlayerController __instance)
             {
-                return false;
+                if (firstRun["Start"])
+                {
+                    logger.LogInfo("Loaded ETGPlugin PlayerController Start()");
+                    firstRun["Start"] = false;
+                }
+
+                if (infiniteKeys)
+                {
+                    __instance.carriedConsumables.InfiniteKeys = true;
+                }
+
+                __instance.stats.SetBaseStatValue(PlayerStats.StatType.Coolness, 20, __instance);
             }
-        }
-
-
-        [HarmonyPatch(typeof(PlayerController), "Start")]
-        [HarmonyPostfix]
-        static void Prefix(PlayerController __instance)
-        {
-            Debug.Log("Loaded ETGPlugin PlayerController Start()");
-            __instance.carriedConsumables.InfiniteKeys = true;
         }
     }
 }
