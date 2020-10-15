@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Datatable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<!-- Conversion = add new files, not compatible with other mods. Standalone = replace all files, not compatible with other mods. Extension = add new files, compatible with other mods. -->
+	<RuntimeModule Name="TraitMod" Type="Extension">
+		
+		<!-- Available tags: AI, Art, Buildings, Gameplay, Improvements, MajorFactions, Maps, MinorFactions, Multiplayer, Other, Resources, Technologies, Units -->
+		<Tags>Gameplay</Tags>
+		<!-- Name of the author -->
+		<Author>Me</Author>
+		<!-- Link to your other work -->
+		<Homepage></Homepage>
+		<!-- Title as it appears in the workshop -->
+		<Title>Trait Mod</Title>
+		<!-- Description as it appears in the workshop -->
+		<Description>
+		Adds custom traits
+		</Description>
+		<!-- Add more content to this each time you update the mod -->
+		<ReleaseNotes></ReleaseNotes>
+		<!-- Image as it appears in the workshop. Size should be 430x430 pixels -->
+		<PreviewImageFile>ModIcon.png</PreviewImageFile>
+
+		<!-- XML files to load -->
+		<Plugins>
+			<!-- Add one DatabasePlugin for each type you modify. Available DataTypes are in /Documentation/Datatypes.txt  -->
+			<DatabasePlugin DataType="FactionTrait, Assembly-CSharp">
+			<!-- This DB Plugin is used to add the base of the Trait -->
+				<FilePath>Simulation/FactionTraits[TraitMod].xml</FilePath>
+			</DatabasePlugin>
+			
+			<DatabasePlugin DataType="Amplitude.Unity.Gui.GuiElement, Assembly-CSharp-firstpass">
+			<!-- This DB Plugin and its Extra type is used to add a "Generic" gui object -->
+				<ExtraTypes>
+					<ExtraType DataType="Amplitude.Unity.Gui.ExtendedGuiElement, Assembly-CSharp-firstpass" />
+				</ExtraTypes>
+				<FilePath>Gui/GuiElements[TraitMod].xml</FilePath>
+			</DatabasePlugin>
+			
+			<DatabasePlugin DataType="Amplitude.Unity.Simulation.SimulationDescriptor, Assembly-CSharp-firstpass">
+			<!-- This DB Plugin is used to made stuff have an effect -->
+				<FilePath>Simulation/SimulationDescriptors[TraitMod].xml</FilePath>
+			</DatabasePlugin>
+			
+			<!-- this is as this mod adds text (the trait name) -->
+			<LocalizationPlugin>
+				<Directory>Localization</Directory>
+			</LocalizationPlugin>
+	
+			<!-- IMPORTANT NOTES: Files can be renamed just MAKE SURE you rename them in this file too,  -->
+			<!-- NEVER EVER USE AN AMPERSAND IN AN XML FILE, JUST DON'T (unless you know what your doing but even then)  -->
+			
+		</Plugins>
+	</RuntimeModule>
+</Datatable>

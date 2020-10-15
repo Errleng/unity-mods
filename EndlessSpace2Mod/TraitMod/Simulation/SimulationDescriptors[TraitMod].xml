@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Datatable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="../Schemas/Amplitude.Unity.Simulation.SimulationDescriptor.xsd">
+	<!-- <SimulationDescriptor Name="zzTrait" Type="FactionTrait">
+		<Modifier TargetProperty="SystemGrowth" Operation="Percent" Value="0.05" Path="ClassEmpire/ClassColonizedStarSystem"/>
+	</SimulationDescriptor> -->
+
+	<SimulationDescriptor Name="CoreTrait" Type="FactionTrait">
+		<!-- Fleet and ships -->
+		<Modifier TargetProperty="MaximumMovement" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassGarrison/ClassShip" />
+		<Modifier TargetProperty="MaximumCommandPoints" Operation="Multiplication" Value="2" Path="ClassEmpire" />
+		
+		<!-- Upkeep -->
+		<Modifier TargetProperty="Upkeep" Operation="Multiplication" Value="0.1" Path="ClassEmpire/ClassGarrison/ClassHero" />
+		<Modifier TargetProperty="GarrisonMoneyUpkeep" Operation="Multiplication" Value="0.1" Path="ClassEmpire//ClassGarrison/ClassShip" />
+
+		<!-- Happiness -->
+		<Modifier TargetProperty="Happiness" Operation="Multiplication" Value="1.5" Path="ClassEmpire/ClassColonizedStarSystem" />
+		<Modifier TargetProperty="OverColonizationPenaltiesReduction" Operation="Multiplication" Value="0.1" Path="ClassEmpire" />
+		<Modifier TargetProperty="OverPopulationPenaltiesReduction" Operation="Multiplication" Value="0.1" Path="ClassEmpire/ClassColonizedStarSystem" />
+		
+		<!-- Manpower -->
+		<Modifier TargetProperty="MaximumEmpireManpowerStock" Operation="Multiplication" Value="2" Path="ClassEmpire" />
+		<!-- System manpower per turn -->
+        <!-- <Modifier TargetProperty="BonusPopulationSystemManpower" Operation="Multiplication" Value="2" Path="ClassPopulation"/>  -->
+		<!-- Empire manpower per turn -->
+        <Modifier TargetProperty="BonusPopulationEmpireManpower" Operation="Multiplication" Value="2" Path="ClassPopulation"/> 
+	</SimulationDescriptor>
+
+	<SimulationDescriptor Name="FleetUpkeepTrait" Type="FactionTrait">
+		<Modifier TargetProperty="MaximumCommandPoints" Operation="Percent" Value="1" Path="ClassEmpire" />
+		<Modifier TargetProperty="GarrisonMoneyUpkeep" Operation="Percent" Value="-0.9" Path="ClassEmpire//ClassGarrison/ClassShip" />
+	</SimulationDescriptor>
+
+	<SimulationDescriptor Name="HeroUpkeepTrait" Type="FactionTrait">
+		<Modifier TargetProperty="Upkeep" Operation="Percent" Value="-0.9" Path="ClassEmpire/ClassGarrison/ClassHero" />
+	</SimulationDescriptor>
+
+	<SimulationDescriptor Name="MovementTrait" Type="FactionTrait">
+		<Modifier TargetProperty="MaximumMovement" Operation="Percent" Value="0.5" Path="ClassEmpire/ClassColonizedStarSystem/ClassGarrison/ClassShip" />
+	</SimulationDescriptor>
+
+	<SimulationDescriptor Name="ApprovalTrait" Type="FactionTrait">
+		<Modifier TargetProperty="Happiness" Operation="Percent" Value="0.5" Path="ClassEmpire/ClassColonizedStarSystem" />
+	</SimulationDescriptor>
+
+	<SimulationDescriptor Name="OvercolonizationTrait" Type="FactionTrait">
+		<Modifier TargetProperty="OverColonizationPenaltiesReduction" Operation="Percent" Value="-0.9" Path="ClassEmpire" />
+	</SimulationDescriptor>
+
+	<SimulationDescriptor Name="OverpopulationTrait" Type="FactionTrait">
+		<Modifier TargetProperty="OverPopulationPenaltiesReduction" Operation="Percent" Value="-0.9" Path="ClassEmpire/ClassColonizedStarSystem" />
+	</SimulationDescriptor>
+
+	<SimulationDescriptor Name="MaximumManpowerTrait" Type="FactionTrait">
+		<Modifier TargetProperty="MaximumEmpireManpowerStock" Operation="Percent" Value="1" Path="ClassEmpire" />
+	</SimulationDescriptor>
+</Datatable>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Datatable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="../Schemas/Amplitude.Unity.Simulation.SimulationDescriptor.xsd">
+	<FactionTrait Name="CoreTrait" SubCategory="FactionTrait" TraitCategory="TraitCategoryStartModifiers" TraitSubCategory="TraitSubCategoryCustomCoreTrait" Family="FactionTraitFamilyStartModifiers" Hidden="false" Custom="true" Cost="0">
+		<SimulationDescriptorReference Name="CoreTrait"/>
+	</FactionTrait>
+
+	<!-- This is the base of the trait its name is used in GUI Elements and the simulation Descriptor is used in Simulation Descriptors -->
+	<FactionTrait Name="FleetUpkeepTrait" SubCategory="FactionTrait" TraitCategory="TraitCategoryStartModifiers" TraitSubCategory="TraitSubCategoryCustomFleetUpkeepTrait" Family="FactionTraitFamilyStartModifiers" Hidden="false" Custom="true" Cost="0">
+	<!-- TraitCategory and Family tell the game which section they should be in on the traits menu -->
+	<!-- TraitSubCategory is used to make mutually exclusive traits, if traits have the same subcategory only one of them can be used when creating an empire -->
+		<SimulationDescriptorReference Name="FleetUpkeepTrait"/>
+	</FactionTrait>
+
+	<FactionTrait Name="HeroUpkeepTrait" SubCategory="FactionTrait" TraitCategory="TraitCategoryStartModifiers" TraitSubCategory="TraitSubCategoryCustomHeroUpkeepTrait" Family="FactionTraitFamilyStartModifiers" Hidden="false" Custom="true" Cost="0">
+		<SimulationDescriptorReference Name="HeroUpkeepTrait"/>
+	</FactionTrait>
+	
+	<FactionTrait Name="MovementTrait" SubCategory="FactionTrait" TraitCategory="TraitCategoryStartModifiers" TraitSubCategory="TraitSubCategoryCustomMovementTrait" Family="FactionTraitFamilyStartModifiers" Hidden="false" Custom="true" Cost="0">
+		<SimulationDescriptorReference Name="MovementTrait"/>
+	</FactionTrait>
+	
+	<FactionTrait Name="ApprovalTrait" SubCategory="FactionTrait" TraitCategory="TraitCategoryStartModifiers" TraitSubCategory="TraitSubCategoryCustomApprovalTrait" Family="FactionTraitFamilyStartModifiers" Hidden="false" Custom="true" Cost="0">
+		<SimulationDescriptorReference Name="ApprovalTrait"/>
+	</FactionTrait>
+
+	<FactionTrait Name="OvercolonizationTrait" SubCategory="FactionTrait" TraitCategory="TraitCategoryStartModifiers" TraitSubCategory="TraitSubCategoryCustomOvercolonizationTrait" Family="FactionTraitFamilyStartModifiers" Hidden="false" Custom="true" Cost="0">
+		<SimulationDescriptorReference Name="OvercolonizationTrait"/>
+	</FactionTrait>
+
+	<FactionTrait Name="OverpopulationTrait" SubCategory="FactionTrait" TraitCategory="TraitCategoryStartModifiers" TraitSubCategory="TraitSubCategoryCustomOverpopulationTrait" Family="FactionTraitFamilyStartModifiers" Hidden="false" Custom="true" Cost="0">
+		<SimulationDescriptorReference Name="OverpopulationTrait"/>
+	</FactionTrait>
+
+	<FactionTrait Name="MaximumManpowerTrait" SubCategory="FactionTrait" TraitCategory="TraitCategoryStartModifiers" TraitSubCategory="TraitSubCategoryCustomMaximumManpowerTrait" Family="FactionTraitFamilyStartModifiers" Hidden="false" Custom="true" Cost="0">
+		<SimulationDescriptorReference Name="MaximumManpowerTrait"/>
+	</FactionTrait>
+</Datatable>

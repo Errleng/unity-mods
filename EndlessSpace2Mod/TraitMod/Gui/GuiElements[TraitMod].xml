@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Datatable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="../Schemas/Amplitude.Unity.Gui.GuiElement.xsd">
+    <GuiElement Name="CoreTrait">
+        <Title>%CoreTraitTitle</Title>
+        <Description>%CoreTraitDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+    </GuiElement>
+
+    <!--This File stops the traits from being in pink, Delete it and find out for yourself if you want-->
+    <!-- It also is what give objects there names and descriptions -->
+    <GuiElement Name="FleetUpkeepTrait">
+        <!-- the %Words are refernces to the localization file -->
+        <Title>%FleetUpkeepTraitTitle</Title>
+        <Description>%FleetUpkeepTraitDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <!-- Tooltips are automatically generated use this is you want to force the tooltip to something else -->
+        <!--<TooltipElement>-->
+        <!--<EffectOverride>%ExampleTraitEffect</EffectOverride>-->
+        <!--</TooltipElement>-->
+        <!-- also note how its disabled line by line, lines of code that end still disabled can cause issues(i.e. start with the less than,exclamation mark,hyphen,hyphen (if I type it, it will break the mod) but don't end with a -->
+    </GuiElement>
+
+    <GuiElement Name="HeroUpkeepTrait">
+        <Title>%HeroUpkeepTraitTitle</Title>
+        <Description>%HeroUpkeepTraitDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+    </GuiElement>
+
+    <GuiElement Name="MovementTrait">
+        <Title>%MovementTraitTitle</Title>
+        <Description>%MovementTraitDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+    </GuiElement>
+
+    <GuiElement Name="ApprovalTrait">
+        <Title>%ApprovalTraitTitle</Title>
+        <Description>%ApprovalTraitDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+    </GuiElement>
+
+    <GuiElement Name="OvercolonizationTrait">
+        <Title>%OvercolonizationTraitTitle</Title>
+        <Description>%OvercolonizationTraitDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+    </GuiElement>
+
+    <GuiElement Name="OverpopulationTrait">
+        <Title>%OverpopulationTraitTitle</Title>
+        <Description>%OverpopulationTraitDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+    </GuiElement>
+
+    <GuiElement Name="MaximumManpowerTrait">
+        <Title>%MaximumManpowerTraitTitle</Title>
+        <Description>%MaximumManpowerTraitDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+    </GuiElement>
+</Datatable>
