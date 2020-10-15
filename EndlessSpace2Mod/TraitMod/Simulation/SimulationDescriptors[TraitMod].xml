@@ -15,15 +15,17 @@
 
 		<!-- Happiness -->
 		<Modifier TargetProperty="Happiness" Operation="Multiplication" Value="1.5" Path="ClassEmpire/ClassColonizedStarSystem" />
-		<Modifier TargetProperty="OverColonizationPenaltiesReduction" Operation="Multiplication" Value="0.1" Path="ClassEmpire" />
-		<Modifier TargetProperty="OverPopulationPenaltiesReduction" Operation="Multiplication" Value="0.1" Path="ClassEmpire/ClassColonizedStarSystem" />
+		<Modifier TargetProperty="OverColonizationPenaltiesReduction" Operation="Addition" Value="-0.9" Path="ClassEmpire" />
+		<Modifier TargetProperty="OverPopulationPenaltiesReduction" Operation="Addition" Value="-0.9" Path="ClassEmpire/ClassColonizedStarSystem" />
 		
 		<!-- Manpower -->
 		<Modifier TargetProperty="MaximumEmpireManpowerStock" Operation="Multiplication" Value="2" Path="ClassEmpire" />
 		<!-- System manpower per turn -->
-        <!-- <Modifier TargetProperty="BonusPopulationSystemManpower" Operation="Multiplication" Value="2" Path="ClassPopulation"/>  -->
+        <Modifier TargetProperty="BonusPopulationSystemManpower" Operation="Multiplication" Value="2" Path="ClassPopulation"/> 
 		<!-- Empire manpower per turn -->
-        <Modifier TargetProperty="BonusPopulationEmpireManpower" Operation="Multiplication" Value="2" Path="ClassPopulation"/> 
+		<Modifier TargetProperty="BonusPopulationEmpireManpower" Operation="Multiplication" Value="2" Path="ClassPopulation"/> 
+		<!-- System development luxury cost -->
+        <Modifier TargetProperty="RecipeCostMultiplier" Operation="Multiplication" Value="0.1" Path="ClassEmpire"/>
 	</SimulationDescriptor>
 
 	<SimulationDescriptor Name="FleetUpkeepTrait" Type="FactionTrait">
