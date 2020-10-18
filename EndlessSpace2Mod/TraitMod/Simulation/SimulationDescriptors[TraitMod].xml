@@ -8,7 +8,7 @@
 		<!-- Fleet and ships -->
 		<Modifier TargetProperty="MaximumMovement" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassGarrison/ClassShip" />
 		<Modifier TargetProperty="MaximumCommandPoints" Operation="Multiplication" Value="2" Path="ClassEmpire" />
-		
+
 		<!-- Upkeep -->
 		<Modifier TargetProperty="Upkeep" Operation="Multiplication" Value="0.1" Path="ClassEmpire/ClassGarrison/ClassHero" />
 		<Modifier TargetProperty="GarrisonMoneyUpkeep" Operation="Multiplication" Value="0.1" Path="ClassEmpire//ClassGarrison/ClassShip" />
@@ -17,15 +17,26 @@
 		<Modifier TargetProperty="Happiness" Operation="Multiplication" Value="1.5" Path="ClassEmpire/ClassColonizedStarSystem" />
 		<Modifier TargetProperty="OverColonizationPenaltiesReduction" Operation="Addition" Value="-0.9" Path="ClassEmpire" />
 		<Modifier TargetProperty="OverPopulationPenaltiesReduction" Operation="Addition" Value="-0.9" Path="ClassEmpire/ClassColonizedStarSystem" />
-		
+
 		<!-- Manpower -->
 		<Modifier TargetProperty="MaximumEmpireManpowerStock" Operation="Multiplication" Value="2" Path="ClassEmpire" />
 		<!-- System manpower per turn -->
-        <Modifier TargetProperty="BonusPopulationSystemManpower" Operation="Multiplication" Value="2" Path="ClassPopulation"/> 
+		<!-- <Modifier TargetProperty="BonusPopulationSystemManpower" Operation="Multiplication" Value="2" Path="ClassPopulation" /> -->
 		<!-- Empire manpower per turn -->
-		<Modifier TargetProperty="BonusPopulationEmpireManpower" Operation="Multiplication" Value="2" Path="ClassPopulation"/> 
+		<Modifier TargetProperty="BonusPopulationEmpireManpower" Operation="Multiplication" Value="2" Path="ClassPopulation" />
+
+		<!-- Resources -->
 		<!-- System development luxury cost -->
-        <Modifier TargetProperty="RecipeCostMultiplier" Operation="Multiplication" Value="0.1" Path="ClassEmpire"/>
+		<!-- <Modifier TargetProperty="RecipeCostMultiplier" Operation="Percent" Value="-0.9" Path="ClassEmpire"/> -->
+		<!-- Strategic resource deposit values -->
+		<Modifier TargetProperty="DepositValue" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassPlanet/ClassResourceDeposit,ResourceTypeStrategic" />
+		<!-- Luxury resource deposit values -->
+		<Modifier TargetProperty="DepositValue" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassPlanet/ClassResourceDeposit,ResourceTypeLuxury"/>
+		<Modifier TargetProperty="LuxuryDepositValue" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassPlanet" />
+		<!-- Strategic resource bonus -->
+        <!-- <Modifier TargetProperty="ResourceBonus" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassColonizedPlanet/ClassResourceDeposit,ResourceTypeStrategic"/> -->
+		<!-- Luxury resource bonus -->
+        <!-- <Modifier TargetProperty="ResourceBonus" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassColonizedPlanet/ClassResourceDeposit,ResourceTypeLuxury"/> -->
 	</SimulationDescriptor>
 
 	<SimulationDescriptor Name="FleetUpkeepTrait" Type="FactionTrait">
