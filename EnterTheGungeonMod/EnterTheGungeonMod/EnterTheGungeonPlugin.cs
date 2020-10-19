@@ -88,7 +88,7 @@ namespace EnterTheGungeonMod
 
 
             [HarmonyPatch(typeof(PlayerController), "Start")]
-            [HarmonyPostfix]
+            [HarmonyPrefix]
             static void Prefix(PlayerController __instance)
             {
                 if (firstRun["Start"])
@@ -103,6 +103,33 @@ namespace EnterTheGungeonMod
                 }
 
                 __instance.stats.SetBaseStatValue(PlayerStats.StatType.Coolness, 20, __instance);
+            }
+
+
+            [HarmonyPatch(typeof(FloorRewardData), "DetermineCurrentMagnificence")]
+            [HarmonyPrefix]
+            static bool Prefix(float __result)
+            {
+                // Magnificence table
+                //0  0%
+                //1  79.84%
+                //2  95.53%
+                //3  98.62%
+                //4  99.23%
+                //5  99.34% 
+
+                // Set magnificence to 0 to always have the same chance of getting A or S tier loot
+                __result = 0;
+                return false;
+            }
+
+
+            [HarmonyPatch(typeof(FloorRewardData), "GetTargetQualityFromChances")]
+            [HarmonyPrefix]
+            static void Prefix(ref float fran, ref float dChance, ref float cChance, ref float bChance, ref float aChance, ref float sChance)
+            {
+                // More chance for higher quality
+                //fran += Math.Min(1, fran * 1.1f);
             }
         }
     }
