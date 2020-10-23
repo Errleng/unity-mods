@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Datatable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="Documentation/Schemas/Amplitude.Unity.Runtime.RuntimeModule.xsd">
+
+	<RuntimeModule Name="PopControl" Type="Extension" Version="0.63">
+
+        <Title>Populace Control</Title>
+        <Description>This allows for the conversion of a faction's major population unit into any other population unit contained within the system and vice versa.  This is done with genetic manipulation via industry constructibles. The cost of a population conversion is a single turn.   
+
+To make room for arriving population units in crowded systems,  The constructible "Soylent Green" is provided.  It sacrifices a major population for a temporary increase to dust production in the system.
+
+
+OTHER POPULATION CHANGES
+-Sowers anti-depletion trait given to Amoeba, Bhagabas, Galvrans, and Illo
+-Guardian cloning has an increased turn cost of 3
+-Guardian Sacrifice cost reduced from 10 turns to 3 for Non-Unfallen factions
+-Riftborn are built with system production that inceases with population count
+-Added major population units as a custom trait under "Starting Major Population" filter
+
+
+POPULATION BONUSES 
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=935003097]Vardogyr's Minor Faction Guide[/url]
+[url=http://endless-space-2.wikia.com/wiki/Population]ES2 Population Wiki[/url]
+
+</Description>
+        
+		<Author>tygart</Author>
+        
+		<Homepage></Homepage>
+
+        <PreviewImageFile>PopControl.png</PreviewImageFile>
+
+		<ReleaseNotes>Updated for V1.5.28
+
+</ReleaseNotes>
+        <!-- Available tags: AI, Art, Buildings, Gameplay, Improvements, MajorFactions, Maps, MinorFactions, Multiplayer, Other, Resources, Technologies, Units. -->
+        <Tags>MinorFactions,MajorFactions,Improvements</Tags>
+
+		<Plugins>
+
+			<DatabasePlugin DataType="Amplitude.Unity.Gui.GuiElement, Assembly-CSharp-firstpass">
+				<ExtraTypes>
+					<ExtraType DataType="Amplitude.Unity.Gui.ExtendedGuiElement, Assembly-CSharp-firstpass" />
+				</ExtraTypes>
+				<FilePath>Gui/GuiElements[*].xml</FilePath>
+			</DatabasePlugin>
+
+			<DatabasePlugin DataType="Amplitude.Unity.Simulation.SimulationDescriptor, Assembly-CSharp-firstpass">
+				<FilePath>Simulation/SimulationDescriptors[PopControl].xml</FilePath>
+				<FilePath>Simulation/SimulationDescriptors[ColonizedStarSystemMod].xml</FilePath>
+			</DatabasePlugin>
+
+			<DatabasePlugin DataType="IndustryConstructibleElement, Assembly-CSharp">
+				<ExtraTypes>
+					<ExtraType DataType="StarSystemImprovementDefinition, Assembly-CSharp" />
+					<ExtraType DataType="StarSystemPopulationTransformImprovementDefinition, Assembly-CSharp" />
+				</ExtraTypes>
+				<FilePath>Simulation/ConstructibleElement_Industry[*].xml</FilePath>
+			</DatabasePlugin>
+
+			<DatabasePlugin DataType="PopulationDefinition, Assembly-CSharp">
+				<FilePath>Simulation/PopulationDefinitions[PopControl].xml</FilePath>
+			</DatabasePlugin>
+
+			<DatabasePlugin DataType="TemporaryEffectDefinition, Assembly-CSharp" >
+				<FilePath>Simulation/TemporaryEffectDefinitions.xml</FilePath>
+			</DatabasePlugin>
+
+			<DatabasePlugin DataType="FactionTrait, Assembly-CSharp" Priority="20" >
+				<ExtraTypes>
+					<ExtraType DataType="FactionAffinity, Assembly-CSharp" />
+				</ExtraTypes>
+				<FilePath>Simulation/FactionTraits[PopControl].xml</FilePath>
+				<!--<FilePath>Simulation/FactionTraits[AffinityModTest].xml</FilePath>-->
+			</DatabasePlugin>
+
+            <LocalizationPlugin DefaultLanguage="english">
+                <Directory>Localization</Directory>
+            </LocalizationPlugin>
+			
+		</Plugins>
+
+	</RuntimeModule>
+</Datatable>

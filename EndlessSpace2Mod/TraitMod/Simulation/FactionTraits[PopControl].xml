@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Datatable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="../Schemas/FactionTrait.xsd">
+
+	<FactionTrait Name="FactionTraitMinorCravers" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartCravers" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityCravers,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorCravers"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>	
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorSophons" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartSophons" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinitySophons,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorSophons"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorTerrans" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartTerrans" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityTerrans,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorTerrans"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorHoratio" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartHoratio" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityHoratio,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorHoratio"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>	
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorTimeLords" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartTimeLords" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityTimeLords,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorTimeLords"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorVenetians" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartVenetians" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityVenetians,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorVenetians"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorUnfallen" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartUnfallen" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityUnfallen,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorUnfallen"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorVaulters" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartVaulters" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityVaulters,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorVaulters"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorMajorHisshos" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartMajorHisshos" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityMajorHisshos,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorMajorHisshos"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>		
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorMezari" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartMezari" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityMezari,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorMezari"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorSheredyn" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartSheredyn" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinitySheredyn,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorSheredyn"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorVaultersScience" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartVaultersScience" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityVaultersScience,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorVaultersScience"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorVaultersMilitary" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartVaultersMilitary" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityVaultersMilitary,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorVaultersMilitary"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorVampirilis" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartVampirilis" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityVampirilis,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorVampirilis"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorUmbralChoir,!FactionTraitMinorTemplars</Prerequisites>
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorUmbralChoir" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartVampirilis" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityUmbralChoir,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorUmbralChoir"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorTemplars</Prerequisites>
+	</FactionTrait>
+
+	<FactionTrait Name="FactionTraitMinorTemplars" SubCategory="FactionTrait" TraitCategory="TraitCategoryPopulation" TraitSubCategory="TraitSubCategoryStartVampirilis" Family="FactionTraitFamilyStartingMajorPopulation" Hidden="false" Custom="true" Cost="10">
+        <Command Name="AddMinorPopulation" Arguments="AffinityTemplars,1" Priority="100"/>
+        <SimulationDescriptorReference Name="FactionTraitMinorTemplars"/>      
+		<Prerequisites>!AffinityGameplayVampirilis,!FactionTraitMinorCravers,!FactionTraitMinorSophons,!FactionTraitMinorTerrans,!FactionTraitMinorHoratio,!FactionTraitMinorTimeLords,!FactionTraitMinorVenetians,!FactionTraitMinorUnfallen,!FactionTraitMinorVaulters,!FactionTraitMinorMajorHisshos,!FactionTraitMinorMezari,!FactionTraitMinorSheredyn,!FactionTraitMinorVaultersScience,!FactionTraitMinorVaultersMilitary,!FactionTraitMinorVampirilis,!FactionTraitMinorUmbralChoir</Prerequisites>
+	</FactionTrait>
+	
+	<!--
+	<FactionTrait Name="TestMod" SubCategory="FactionTrait" TraitCategory="TraitCategoryStartModifiers" Family="FactionTraitFamilyStartModifiers" Hidden="false" Custom="true" Cost="0" IgnoreForTraitsCount="true">
+		
+		Command Name="AddMinorPopulation" Arguments="AffinityAmoeba,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityBenthys,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityBots,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityDeuyivans,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityHaroshems,1" Priority="100"/>
+
+		<Command Name="AddMinorPopulation" Arguments="AffinityHisshos,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityMavros,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityPilgrims,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityZvali,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityTikanans,1" Priority="100"/>
+
+		<Command Name="AddMinorPopulation" Arguments="AffinityGnashasts,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityEyders,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityNiris,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityBhagabas,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityRemnant,1" Priority="100"/>
+
+		<Command Name="AddMinorPopulation" Arguments="AffinityPulsos,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityGreenman,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityGuardians,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinitySistersOfMercy,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityIllo,1" Priority="100"/>
+
+		<Command Name="AddMinorPopulation" Arguments="AffinitySowers,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityKalTikMas,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinitySefaloros,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityGalvrans,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityHarmony,1" Priority="100"/>
+
+
+		<Command Name="AddMinorPopulation" Arguments="AffinityCravers,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinitySophons,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityTerrans,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityMezari,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinitySheredyn,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityHoratio,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityVenetians,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityUnfallen,1" Priority="100"/>
+		<Command Name="TransferResources" Arguments="Strategic1,30"/>
+		<Command Name="TransferResources" Arguments="Strategic2,30"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityTimeLords,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityVaulters,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityVaultersScience,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityVaultersMilitary,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityMajorHisshos,1" Priority="100"/>
+		<Command Name="AddMinorPopulation" Arguments="AffinityCravers,1" Priority="100"/>
+
+		
+		<SimulationDescriptor Name="TestMod"    Type="FactionTrait"/>
+		<Prerequisites>!AffinityMappingVampirilis</Prerequisites>
+	</FactionTrait>
+	-->
+		
+</Datatable>

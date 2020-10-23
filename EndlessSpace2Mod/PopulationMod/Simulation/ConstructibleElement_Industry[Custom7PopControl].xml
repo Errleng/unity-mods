@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Datatable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="../Schemas/IndustryConstructibleElement.xsd">
+
+    
+    <!--Assimilate Cravers Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementAssimilateCraversPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="AffinityCravers"  PopulationDestination="Major" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementCraversPopulationQueued"/>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">(SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityCraversCount,ClassPopulation', PopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingCravers) ) gt 0</InterpreterPrerequisite>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayCravers</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite> 
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityCraversCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementAssimilateCraversPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Clone Cravers Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementCloneCraversPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="Major"  PopulationDestination="AffinityCravers" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementMajorPopulationQueued"/>        
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayCravers</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">( Property(Context, @ClassColonizedStarSystem, MajorPopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingMajor) ) gt 0</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityCraversCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementCloneCraversPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Assimilate Sophons Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementAssimilateSophonsPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="AffinitySophons" PopulationDestination="Major" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementSophonsPopulationQueued"/>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">(SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinitySophonsCount,ClassPopulation', PopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingSophons) ) gt 0</InterpreterPrerequisite>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplaySophons</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinitySophonsCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementAssimilateSophonsPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Clone Sophons Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementCloneSophonsPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="Major"  PopulationDestination="AffinitySophons" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementMajorPopulationQueued"/>      
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplaySophons</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">( Property(Context, @ClassColonizedStarSystem, MajorPopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingMajor) ) gt 0</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinitySophonsCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementCloneSophonsPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Assimilate Terrans Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementAssimilateTerransPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="AffinityTerrans" PopulationDestination="Major" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementTerransPopulationQueued"/>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">(SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityTerransCount,ClassPopulation', PopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingTerrans) ) gt 0</InterpreterPrerequisite>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayTerrans</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityTerransCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementAssimilateTerransPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Clone Terrans Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementCloneTerransPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="Major"  PopulationDestination="AffinityTerrans" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementMajorPopulationQueued"/>   
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayTerrans</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">( Property(Context, @ClassColonizedStarSystem, MajorPopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingMajor) ) gt 0</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityTerransCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementCloneTerransPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+  
+    <!--Assimilate Horatio Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementAssimilateHoratioPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="AffinityHoratio" PopulationDestination="Major" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementHoratioPopulationQueued"/>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">(SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityHoratioCount,ClassPopulation', PopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingHoratio) ) gt 0</InterpreterPrerequisite>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayHoratio</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityHoratioCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementAssimilateHoratioPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Clone Horatio Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementCloneHoratioPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="Major"  PopulationDestination="AffinityHoratio" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementMajorPopulationQueued"/>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayHoratio</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">( Property(Context, @ClassColonizedStarSystem, MajorPopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingMajor) ) gt 0</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityHoratioCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementCloneHoratioPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Assimilate Venetians Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementAssimilateVenetiansPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="AffinityVenetians" PopulationDestination="Major" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementVenetiansPopulationQueued"/>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">(SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityVenetiansCount,ClassPopulation', PopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingVenetians) ) gt 0</InterpreterPrerequisite>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayVenetians</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityVenetiansCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementAssimilateVenetiansPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Clone Venetians Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementCloneVenetiansPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="Major"  PopulationDestination="AffinityVenetians" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementMajorPopulationQueued"/>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayVenetians</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">( Property(Context, @ClassColonizedStarSystem, MajorPopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingMajor) ) gt 0</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityVenetiansCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementCloneVenetiansPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Assimilate Unfallen Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementAssimilateUnfallenPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="AffinityUnfallen" PopulationDestination="Major" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementAssimilateImmigrantPopulationQueued"/>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">(SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityUnfallenCount,ClassPopulation', PopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingUnfallen) ) gt 0</InterpreterPrerequisite>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayUnfallen</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityUnfallenCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementAssimilateUnfallenPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Clone Unfallen Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementCloneUnfallenPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="Major"  PopulationDestination="AffinityUnfallen" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementMajorPopulationQueued"/>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayUnfallen</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">( Property(Context, @ClassColonizedStarSystem, MajorPopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingMajor) ) gt 0</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityUnfallenCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementCloneUnfallenPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Assimilate TimeLords Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="AffinityTimeLords" PopulationDestination="None">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementTimeLordsPopulationQueued"/>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">(SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityTimeLordsCount,ClassPopulation', PopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingTimeLords) ) gt 0</InterpreterPrerequisite>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayTimeLords</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityTimeLordsCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf7"/>
+      <TemporaryEffect>SoylentGreenEffect</TemporaryEffect>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Clone TimeLords Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementCloneTimeLordsPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationDestination="AffinityTimeLords" PopulationToTransformCount="1" CreateIfNotAvailable="true" ConsumeResourceSurplus="true">
+      <Tags>NoBuyout</Tags>
+		  <CustomCost ResourceName="SystemProduction">(100 + Property(Context,@'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityTimeLordsCount', PopulationCount) * 100) * Property(StockLocation, @../ClassEmpire, GameSpeedMultiplier, true)</CustomCost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="QueuedDescriptorIncreaseVirtualPopulation"/>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayTimeLords</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityTimeLordsCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="MaximumPopulationSystem,Enqueue">(Property(Context,@ClassColonizedStarSystem, MaximumPopulation) ge (1 + Property(Context,@ClassColonizedStarSystem, Population) + Property(Context,@ClassColonizedStarSystem, VirtualPopulation)))</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite">(Property(Context,@ClassColonizedStarSystem, MaximumPopulation) ge (Property(Context,@ClassColonizedStarSystem, Population) + Property(Context,@ClassColonizedStarSystem, VirtualPopulation)))</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementCloneTimeLordsPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Assimilate Vampirilis Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementAssimilateVampirilisPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="AffinityVampirilis" PopulationDestination="None">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementVampirilisPopulationQueued"/>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">(SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityVampirilisCount,ClassPopulation', PopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingVampirilis) ) gt 0</InterpreterPrerequisite>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayVampirilis</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityVampirilisCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementAssimilateVampirilisPopulationSelf7"/>
+      <TemporaryEffect>SoylentGreenEffect</TemporaryEffect>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Clone Vampirilis Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementCloneVampirilisPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationDestination="AffinityVampirilis" PopulationToTransformCount="1" CreateIfNotAvailable="true" ConsumeResourceSurplus="true">
+      <Tags>NoBuyout</Tags>
+		  <CustomCost ResourceName="SystemProduction">(100 + Property(Context,@'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityVampirilisCount', PopulationCount) * 100) * Property(StockLocation, @../ClassEmpire, GameSpeedMultiplier, true)</CustomCost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="QueuedDescriptorIncreaseVirtualPopulation"/>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayVampirilis</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityVampirilisCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="MaximumPopulationSystem,Enqueue">(Property(Context,@ClassColonizedStarSystem, MaximumPopulation) ge (1 + Property(Context,@ClassColonizedStarSystem, Population) + Property(Context,@ClassColonizedStarSystem, VirtualPopulation)))</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite">(Property(Context,@ClassColonizedStarSystem, MaximumPopulation) ge (Property(Context,@ClassColonizedStarSystem, Population) + Property(Context,@ClassColonizedStarSystem, VirtualPopulation)))</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementCloneVampirilisPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Assimilate Vaulters Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementAssimilateVaultersPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="AffinityVaulters" PopulationDestination="Major" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementVaultersPopulationQueued"/>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">(SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityVaultersCount,ClassPopulation', PopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingVaulters) ) gt 0</InterpreterPrerequisite>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayVaulters</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityVaultersCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementAssimilateVaultersPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Clone Vaulters Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementCloneVaultersPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="Major"  PopulationDestination="AffinityVaulters" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementMajorPopulationQueued"/>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayVaulters</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">( Property(Context, @ClassColonizedStarSystem, MajorPopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingMajor) ) gt 0</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityVaultersCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementCloneVaultersPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Assimilate MajorHisshos Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="AffinityMajorHisshos" PopulationDestination="Major" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementMajorHisshosPopulationQueued"/>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">(SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityMajorHisshosCount,ClassPopulation', PopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingMajorHisshos) ) gt 0</InterpreterPrerequisite>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayMajorHisshos</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityMajorHisshosCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Clone MajorHisshos Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementCloneMajorHisshosPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="Major"  PopulationDestination="AffinityMajorHisshos" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementMajorPopulationQueued"/>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayMajorHisshos</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">( Property(Context, @ClassColonizedStarSystem, MajorPopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingMajor) ) gt 0</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityMajorHisshosCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementCloneMajorHisshosPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Assimilate UmbralChoir Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="AffinityUmbralChoir" PopulationDestination="Major" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementUmbralChoirPopulationQueued"/>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">(SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityUmbralChoirCount,ClassPopulation', PopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingUmbralChoir) ) gt 0</InterpreterPrerequisite>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayUmbralChoir</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityUmbralChoirCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Clone UmbralChoir Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementCloneUmbralChoirPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="Major"  PopulationDestination="AffinityUmbralChoir" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementMajorPopulationQueued"/>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayUmbralChoir</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">( Property(Context, @ClassColonizedStarSystem, MajorPopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingMajor) ) gt 0</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityUmbralChoirCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementCloneUmbralChoirPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Assimilate Templars Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementAssimilateTemplarsPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="AffinityTemplars" PopulationDestination="Major" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementTemplarsPopulationQueued"/>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">(SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityTemplarsCount,ClassPopulation', PopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingTemplars) ) gt 0</InterpreterPrerequisite>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayTemplars</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityTemplarsCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementAssimilateTemplarsPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+    <!--Clone Templars Self7-->
+    <StarSystemPopulationTransformImprovementDefinition   Name="StarSystemImprovementCloneTemplarsPopulationSelf7" SubCategory="SubCategoryPopulation" ScoreProvider="StarSystemImprovementBuilt"
+                                                    PopulationSource="Major"  PopulationDestination="AffinityTemplars" PopulationToTransformCount="1">
+      <Tags>NoBuyout</Tags>
+		  <Cost ResourceName="SystemTurnBased">1</Cost>
+      <PathPrerequisite Inverted="false" Flags="Prerequisite,Discard">ColonizedStarSystemStateColony</PathPrerequisite>
+      <QueuedSimulationDescriptorReference Name="StarSystemImprovementMajorPopulationQueued"/>
+      <PathPrerequisite Inverted="false"   Flags="Prerequisite,Discard">../ClassEmpire,AffinityGameplayTemplars</PathPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassEmpire/ClassPopulation,ClassPopulationEmpireAffinityCustom7Count', PopulationCount) ge 1</InterpreterPrerequisite>
+      <InterpreterPrerequisite Inverted="false" Flags="NotEnoughPopulation,Enqueue">( Property(Context, @ClassColonizedStarSystem, MajorPopulationCount) - Property(Context, @ClassColonizedStarSystem, OnGoingMajor) ) gt 0</InterpreterPrerequisite>
+      <InterpreterPrerequisite Flags="Prerequisite,Discard">SumProperty(Context, @'../ClassColonizedStarSystem/ClassPopulationStarSystemAffinityTemplarsCount,ClassPopulation', PopulationCount) ge 1</InterpreterPrerequisite>
+      <SimulationDescriptorReference Name="StarSystemImprovementCloneTemplarsPopulationSelf7"/>
+    </StarSystemPopulationTransformImprovementDefinition>
+
+</Datatable>

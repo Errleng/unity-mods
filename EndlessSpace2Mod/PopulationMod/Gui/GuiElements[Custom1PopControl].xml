@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Datatable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="../Schemas/Amplitude.Unity.Gui.GuiElement.xsd">
+
+    <!-- Major Self1-->
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateCraversPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateCraversPopulationTitle</Title>
+        <Description>%AffinityCraversDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityCraversTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityCraversLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateCraversPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneCraversPopulationSelf1">
+        <Title>%StarSystemImprovementCloneCraversPopulationTitle</Title>
+        <Description>%AffinityCraversDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityCraversTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityCraversLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneCraversPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateSophonsPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateSophonsPopulationTitle</Title>
+        <Description>%AffinitySophonsDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinitySophonsTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinitySophonsLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateSophonsPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneSophonsPopulationSelf1">
+        <Title>%StarSystemImprovementCloneSophonsPopulationTitle</Title>
+        <Description>%AffinitySophonsDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinitySophonsTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinitySophonsLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneSophonsPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateTerransPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateTerransPopulationTitle</Title>
+        <Description>%AffinityTerransDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityTerransTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityTerransLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateTerransPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneTerransPopulationSelf1">
+        <Title>%StarSystemImprovementCloneTerransPopulationTitle</Title>
+        <Description>%AffinityTerransDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityTerransTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityTerransLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneTerransPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateMezariPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateMezariPopulationTitle</Title>
+        <Description>%AffinityMezariDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityMezariTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityMezariLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateMezariPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneMezariPopulationSelf1">
+        <Title>%StarSystemImprovementCloneMezariPopulationTitle</Title>
+        <Description>%AffinityMezariDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityMezariTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityMezariLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneMezariPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateSheredynPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateSheredynPopulationTitle</Title>
+        <Description>%AffinitySheredynDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinitySheredynTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinitySheredynLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateSheredynPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneSheredynPopulationSelf1">
+        <Title>%StarSystemImprovementCloneSheredynPopulationTitle</Title>
+        <Description>%AffinitySheredynDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinitySheredynTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinitySheredynLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneSheredynPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateHoratioPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateHoratioPopulationTitle</Title>
+        <Description>%AffinityHoratioDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityHoratioTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityHoratioLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateHoratioPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneHoratioPopulationSelf1">
+        <Title>%StarSystemImprovementCloneHoratioPopulationTitle</Title>
+        <Description>%AffinityHoratioDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityHoratioTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityHoratioLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneHoratioPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateVenetiansPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateVenetiansPopulationTitle</Title>
+        <Description>%AffinityVenetiansDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityVenetiansTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityVenetiansLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateVenetiansPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneVenetiansPopulationSelf1">
+        <Title>%StarSystemImprovementCloneVenetiansPopulationTitle</Title>
+        <Description>%AffinityVenetiansDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityVenetiansTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityVenetiansLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneVenetiansPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateUnfallenPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateUnfallenPopulationTitle</Title>
+        <Description>%AffinityUnfallenDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityUnfallenTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityUnfallenLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateUnfallenPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneUnfallenPopulationSelf1">
+        <Title>%StarSystemImprovementCloneUnfallenPopulationTitle</Title>
+        <Description>%AffinityUnfallenDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityUnfallenTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityUnfallenLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneUnfallenPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateTimeLordsPopulationTitle</Title>
+        <Description>%AffinityTimeLordsDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityTimeLordsTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityTimeLordsLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateTimeLordsPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneTimeLordsPopulationSelf1">
+        <Title>%StarSystemImprovementCloneTimeLordsPopulationTitle</Title>
+        <Description>%AffinityTimeLordsDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityTimeLordsTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityTimeLordsLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneTimeLordsPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateVampirilisPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateVampirilisPopulationTitle</Title>
+        <Description>%AffinityVampirilisDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityVampirilisTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityVampirilisLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateVampirilisPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneVampirilisPopulationSelf1">
+        <Title>%StarSystemImprovementCloneVampirilisPopulationTitle</Title>
+        <Description>%AffinityVampirilisDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityVampirilisTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityVampirilisLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneVampirilisPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateVaultersPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateVaultersPopulationTitle</Title>
+        <Description>%AffinityVaultersDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityVaultersTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityVaultersLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateVaultersPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneVaultersPopulationSelf1">
+        <Title>%StarSystemImprovementCloneVaultersPopulationTitle</Title>
+        <Description>%AffinityVaultersDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityVaultersTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityVaultersLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneVaultersPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateVaultersSciencePopulationTitle</Title>
+        <Description>%AffinityVaultersScienceDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityVaultersScienceTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityVaultersScienceLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateVaultersSciencePopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneVaultersSciencePopulationSelf1">
+        <Title>%StarSystemImprovementCloneVaultersSciencePopulationTitle</Title>
+        <Description>%AffinityVaultersScienceDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityVaultersScienceTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityVaultersScienceLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneVaultersSciencePopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateVaultersMilitaryPopulationTitle</Title>
+        <Description>%AffinityVaultersMilitaryDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityVaultersMilitaryTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityVaultersMilitaryLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateVaultersMilitaryPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf1">
+        <Title>%StarSystemImprovementCloneVaultersMilitaryPopulationTitle</Title>
+        <Description>%AffinityVaultersMilitaryDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityVaultersMilitaryTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityVaultersMilitaryLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneVaultersMilitaryPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateMajorHisshosPopulationTitle</Title>
+        <Description>%AffinityMajorHisshosDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityMajorHisshosTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityMajorHisshosLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateMajorHisshosPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneMajorHisshosPopulationSelf1">
+        <Title>%StarSystemImprovementCloneMajorHisshosPopulationTitle</Title>
+        <Description>%AffinityMajorHisshosDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityMajorHisshosTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityMajorHisshosLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneMajorHisshosPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateUmbralChoirPopulationTitle</Title>
+        <Description>%AffinityUmbralChoirDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityUmbralChoirTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityUmbralChoirLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateUmbralChoirPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneUmbralChoirPopulationSelf1">
+        <Title>%StarSystemImprovementCloneUmbralChoirPopulationTitle</Title>
+        <Description>%AffinityUmbralChoirDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityUmbralChoirTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityUmbralChoirLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneUmbralChoirPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementAssimilateTemplarsPopulationSelf1">
+        <Title>%StarSystemImprovementAssimilateTemplarsPopulationTitle</Title>
+        <Description>%AffinityTemplarsDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityTemplarsTinyMinus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityTemplarsLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementAssimilateTemplarsPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="StarSystemImprovementCloneTemplarsPopulationSelf1">
+        <Title>%StarSystemImprovementCloneTemplarsPopulationTitle</Title>
+        <Description>%AffinityTemplarsDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Gui/AffinityTemplarsTinyPlus" />
+            <Icon Size="Large" Path="Bitmaps/Dynamic/Affinities/AffinityTemplarsLarge" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%StarSystemImprovementCloneTemplarsPopulationTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+    
+</Datatable>

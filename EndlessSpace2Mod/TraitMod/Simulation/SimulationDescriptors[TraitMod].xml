@@ -29,14 +29,14 @@
 		<!-- System development luxury cost -->
 		<!-- <Modifier TargetProperty="RecipeCostMultiplier" Operation="Percent" Value="-0.9" Path="ClassEmpire"/> -->
 		<!-- Strategic resource deposit values -->
-		<Modifier TargetProperty="DepositValue" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassPlanet/ClassResourceDeposit,ResourceTypeStrategic" />
+		<!-- <Modifier TargetProperty="DepositValue" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassPlanet/ClassResourceDeposit,ResourceTypeStrategic" /> -->
 		<!-- Luxury resource deposit values -->
-		<Modifier TargetProperty="DepositValue" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassPlanet/ClassResourceDeposit,ResourceTypeLuxury"/>
-		<Modifier TargetProperty="LuxuryDepositValue" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassPlanet" />
+		<!-- <Modifier TargetProperty="DepositValue" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassPlanet/ClassResourceDeposit,ResourceTypeLuxury"/> -->
+		<!-- <Modifier TargetProperty="LuxuryDepositValue" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassPlanet" /> -->
 		<!-- Strategic resource bonus -->
-        <!-- <Modifier TargetProperty="ResourceBonus" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassColonizedPlanet/ClassResourceDeposit,ResourceTypeStrategic"/> -->
+        <Modifier TargetProperty="ResourceBonus" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassColonizedPlanet/ClassResourceDeposit,ResourceTypeStrategic"/>
 		<!-- Luxury resource bonus -->
-        <!-- <Modifier TargetProperty="ResourceBonus" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassColonizedPlanet/ClassResourceDeposit,ResourceTypeLuxury"/> -->
+        <Modifier TargetProperty="ResourceBonus" Operation="Multiplication" Value="2" Path="ClassEmpire/ClassColonizedStarSystem/ClassColonizedPlanet/ClassResourceDeposit,ResourceTypeLuxury"/>
 	</SimulationDescriptor>
 
 	<SimulationDescriptor Name="FleetUpkeepTrait" Type="FactionTrait">

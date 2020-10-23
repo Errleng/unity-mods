@@ -49,7 +49,42 @@
 	
 			<!-- IMPORTANT NOTES: Files can be renamed just MAKE SURE you rename them in this file too,  -->
 			<!-- NEVER EVER USE AN AMPERSAND IN AN XML FILE, JUST DON'T (unless you know what your doing but even then)  -->
-			
+
+			<DatabasePlugin DataType="Amplitude.Unity.Gui.GuiElement, Assembly-CSharp-firstpass">
+				<ExtraTypes>
+					<ExtraType DataType="Amplitude.Unity.Gui.ExtendedGuiElement, Assembly-CSharp-firstpass" />
+				</ExtraTypes>
+				<FilePath>Gui/GuiElements[*].xml</FilePath>
+			</DatabasePlugin>
+
+			<DatabasePlugin DataType="Amplitude.Unity.Simulation.SimulationDescriptor, Assembly-CSharp-firstpass">
+				<FilePath>Simulation/SimulationDescriptors[PopControl].xml</FilePath>
+				<FilePath>Simulation/SimulationDescriptors[ColonizedStarSystemMod].xml</FilePath>
+			</DatabasePlugin>
+
+			<DatabasePlugin DataType="IndustryConstructibleElement, Assembly-CSharp">
+				<ExtraTypes>
+					<ExtraType DataType="StarSystemImprovementDefinition, Assembly-CSharp" />
+					<ExtraType DataType="StarSystemPopulationTransformImprovementDefinition, Assembly-CSharp" />
+				</ExtraTypes>
+				<FilePath>Simulation/ConstructibleElement_Industry[*].xml</FilePath>
+			</DatabasePlugin>
+
+			<DatabasePlugin DataType="PopulationDefinition, Assembly-CSharp">
+				<FilePath>Simulation/PopulationDefinitions[PopControl].xml</FilePath>
+			</DatabasePlugin>
+
+			<DatabasePlugin DataType="TemporaryEffectDefinition, Assembly-CSharp" >
+				<FilePath>Simulation/TemporaryEffectDefinitions.xml</FilePath>
+			</DatabasePlugin>
+
+			<DatabasePlugin DataType="FactionTrait, Assembly-CSharp" Priority="20" >
+				<ExtraTypes>
+					<ExtraType DataType="FactionAffinity, Assembly-CSharp" />
+				</ExtraTypes>
+				<FilePath>Simulation/FactionTraits[PopControl].xml</FilePath>
+				<!--<FilePath>Simulation/FactionTraits[AffinityModTest].xml</FilePath>-->
+			</DatabasePlugin>
 		</Plugins>
 	</RuntimeModule>
 </Datatable>

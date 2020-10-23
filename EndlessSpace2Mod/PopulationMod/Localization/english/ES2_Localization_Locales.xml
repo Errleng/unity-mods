@@ -1,33 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Datatable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<!-- Here we use the same %words used in GuiElements and give the trait its title and description -->
-
-	<!-- <LocalizationPair Name="%zzTraitTitle">Custom zz Trait</LocalizationPair>
-	<LocalizationPair Name="%zzTraitDescription">zz buffs</LocalizationPair> -->
-	
-	<LocalizationPair Name="%CoreTraitTitle">Custom Core Trait</LocalizationPair>
-	<LocalizationPair Name="%CoreTraitDescription">Core trait</LocalizationPair>
-	
-	<LocalizationPair Name="%FleetUpkeepTraitTitle">Custom Fleet Upkeep Trait</LocalizationPair>
-	<LocalizationPair Name="%FleetUpkeepTraitDescription">Fleet upkeep buffs</LocalizationPair>
-
-	<LocalizationPair Name="%HeroUpkeepTraitTitle">Custom Hero Upkeep Trait</LocalizationPair>
-	<LocalizationPair Name="%HeroUpkeepTraitDescription">Hero upkeep buffs</LocalizationPair>
-	
-	<LocalizationPair Name="%MovementTraitTitle">Custom Movement Trait</LocalizationPair>
-	<LocalizationPair Name="%MovementTraitDescription">Movement buffs</LocalizationPair>
-	
-	<LocalizationPair Name="%ApprovalTraitTitle">Custom Approval Trait</LocalizationPair>
-	<LocalizationPair Name="%ApprovalTraitDescription">Approval buffs</LocalizationPair>
-	
-	<LocalizationPair Name="%OvercolonizationTraitTitle">Custom Overcolonization Trait</LocalizationPair>
-	<LocalizationPair Name="%OvercolonizationTraitDescription">Overcolonization buffs</LocalizationPair>
-	
-	<LocalizationPair Name="%OverpopulationTraitTitle">Custom Overpopulation Trait</LocalizationPair>
-	<LocalizationPair Name="%OverpopulationTraitDescription">Overpopulation buffs</LocalizationPair>
-
-	<LocalizationPair Name="%MaximumManpowerTraitTitle">Custom Maximum Manpower Trait</LocalizationPair>
-	<LocalizationPair Name="%MaximumManpowerTraitDescription">Maximum manpower buffs</LocalizationPair>
+<Datatable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="../../Documentation/Schemas/Amplitude.Unity.Localization.LocalizationDatatableElement.xsd">
 
 	<!-- Minor -->
 	<LocalizationPair Name="%StarSystemImprovementCloneZvaliPopulationTitle">Clone Z'vali [zvalis]</LocalizationPair>
@@ -370,4 +342,5 @@
 	<LocalizationPair Name="%FactionTraitMinorTemplarsDescription">The faction starts with Nakalim population on their home planet</LocalizationPair>
   	<LocalizationPair Name="%FactionTraitMinorTemplarsTitle">Nakalim Citizens</LocalizationPair>
   	<LocalizationPair Name="%FactionTraitMinorTemplarsTooltipEffect">+1 [templar] on your home system</LocalizationPair>
+
 </Datatable>

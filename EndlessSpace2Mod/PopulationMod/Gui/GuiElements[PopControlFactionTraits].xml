@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Datatable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="../Schemas/Amplitude.Unity.Gui.GuiElement.xsd">
+
+	
+
+    <!-- Major -->
+    <GuiElement Name="FactionTraitFamilyStartingMajorPopulation">
+        <Title>%FactionTraitFamilyStartingMajorPopulationTitle</Title>
+        <Description>%FactionTraitFamilyStartingMajorPopulationDescription</Description>
+    </GuiElement>
+
+
+    <ExtendedGuiElement Name="FactionTraitMinorCravers">
+        <Title>%FactionTraitMinorCraversTitle</Title>
+        <Description>%FactionTraitMinorCraversDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorCraversTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorSophons">
+        <Title>%FactionTraitMinorSophonsTitle</Title>
+        <Description>%FactionTraitMinorSophonsDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorSophonsTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorTerrans">
+        <Title>%FactionTraitMinorTerransTitle</Title>
+        <Description>%FactionTraitMinorTerransDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorTerransTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorMezari">
+        <Title>%FactionTraitMinorMezariTitle</Title>
+        <Description>%FactionTraitMinorMezariDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorMezariTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorSheredyn">
+        <Title>%FactionTraitMinorSheredynTitle</Title>
+        <Description>%FactionTraitMinorSheredynDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorSheredynTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorHoratio">
+        <Title>%FactionTraitMinorHoratioTitle</Title>
+        <Description>%FactionTraitMinorHoratioDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorHoratioTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorVenetians">
+        <Title>%FactionTraitMinorVenetiansTitle</Title>
+        <Description>%FactionTraitMinorVenetiansDescription</Description>
+        <Icons>
+           <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorVenetiansTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorUnfallen">
+        <Title>%FactionTraitMinorUnfallenTitle</Title>
+        <Description>%FactionTraitMinorUnfallenDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorUnfallenTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorTimeLords">
+        <Title>%FactionTraitMinorTimeLordsTitle</Title>
+        <Description>%FactionTraitMinorTimeLordsDescription</Description>
+        <Icons>
+           <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorTimeLordsTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorVaulters">
+        <Title>%FactionTraitMinorVaultersTitle</Title>
+        <Description>%FactionTraitMinorVaultersDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorVaultersTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorVaultersScience">
+        <Title>%FactionTraitMinorVaultersScienceTitle</Title>
+        <Description>%FactionTraitMinorVaultersScienceDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorVaultersScienceTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorVaultersMilitary">
+        <Title>%FactionTraitMinorVaultersMilitaryTitle</Title>
+        <Description>%FactionTraitMinorVaultersMilitaryDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorVaultersMilitaryTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorMajorHisshos">
+        <Title>%FactionTraitMinorMajorHisshosTitle</Title>
+        <Description>%FactionTraitMinorMajorHisshosDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorMajorHisshosTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorVampirilis">
+        <Title>%FactionTraitMinorVampirilisTitle</Title>
+        <Description>%FactionTraitMinorVampirilisDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorVampirilisTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorUmbralChoir">
+        <Title>%FactionTraitMinorUmbralChoirTitle</Title>
+        <Description>%FactionTraitMinorUmbralChoirDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorUmbralChoirTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    <ExtendedGuiElement Name="FactionTraitMinorTemplars">
+        <Title>%FactionTraitMinorTemplarsTitle</Title>
+        <Description>%FactionTraitMinorTemplarsDescription</Description>
+        <Icons>
+            <Icon Size="Small" Path="Bitmaps/Atlased/Headers/HeaderTraits" />
+        </Icons>
+        <TooltipElement>
+            <EffectOverride>%FactionTraitMinorTemplarsTooltipEffect</EffectOverride>
+        </TooltipElement>
+    </ExtendedGuiElement>
+
+    
+</Datatable>

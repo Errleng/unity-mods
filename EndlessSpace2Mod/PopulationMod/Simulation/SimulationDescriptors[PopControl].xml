@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Datatable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="../Schemas/Amplitude.Unity.Simulation.SimulationDescriptor.xsd">
+
+	
+    <SimulationDescriptor Name="TestMod"    Type="FactionTrait"/>
+       
+
+    <!--Assimilate Minor-->  
+    <SimulationDescriptor Name="StarSystemImprovementZvaliPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingZvali" Operation="Addition" Value="1" />
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementAmoebaPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingAmoeba" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementBenthysPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingBenthys" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementBotsPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingBots" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementDeuyivansPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingDeuyivans" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementHaroshemsPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingHaroshems" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementHisshosPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingHisshos" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementMavrosPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingMavros" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementPilgrimsPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingPilgrims" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementTikanansPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingTikanans" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementGnashastsPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingGnashasts" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementEydersPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingEyders" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementNirisPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingNiris" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementBhagabasPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingBhagabas" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementRemnantPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingRemnant" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementPulsosPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingPulsos" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementGreenmanPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingGreenman" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementGuardiansPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingGuardians" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementSistersOfMercyPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingSistersOfMercy" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementIlloPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingIllo" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementSowersPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingSowers" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementKalTikMasPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingKalTikMas" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementSefalorosPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingSefaloros" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementGalvransPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingGalvrans" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementHarmonyPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingHarmony" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementMinorHackingPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingMinorHacking" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementBasryxoPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingBasryxo" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementOracularsPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingOraculars" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <!--Assimilate Major-->
+    <SimulationDescriptor Name="StarSystemImprovementCraversPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingCravers" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementSophonsPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingSophons" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementTerransPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingTerrans" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementMezariPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingMezari" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementSheredynPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingSheredyn" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementHoratioPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingHoratio" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementVenetiansPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingVenetians" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementUnfallenPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingUnfallen" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementTimeLordsPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingTimeLords" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementVaultersPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingVaulters" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementVaultersSciencePopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingVaultersScience" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementVaultersMilitaryPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingVaultersMilitary" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementMajorHisshosPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingMajorHisshos" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementVampirilisPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingVampirilis" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementUmbralChoirPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingUmbralChoir" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementTemplarsPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingTemplars" Operation="Addition" Value="1" Path="ClassColonizedStarSystem"/>
+    </SimulationDescriptor>
+
+    <!--Clone-->
+    <SimulationDescriptor Name="StarSystemImprovementMajorPopulationQueued" Type="StarSystemImprovement">
+        <Modifier TargetProperty="OnGoingMajor" Operation="Addition" Value="1" />
+    </SimulationDescriptor>  
+
+    <!--Gui-->
+    <SimulationDescriptor Name="StarSystemImprovementCloneZvaliPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneAmoebaPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneBenthysPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneBotsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneDeuyivansPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHaroshemsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHisshosPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMavrosPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementClonePilgrimsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTikanansPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneGnashastsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneEydersPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneNirisPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneBhagabasPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneRemnantPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementClonePulsosPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneGreenmanPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneGuardiansPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSistersOfMercyPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneIlloPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSowersPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneKalTikMasPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSefalorosPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneGalvransPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHarmonyPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMinorHackingPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneBasryxoPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneOracularsPopulation" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateZvaliPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateAmoebaPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateBenthysPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateBotsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateDeuyivansPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHaroshemsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHisshosPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMavrosPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilatePilgrimsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTikanansPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateGnashastsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateEydersPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateNirisPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateBhagabasPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateRemnantPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilatePulsosPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateGreenmanPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateGuardiansPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSistersOfMercyPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateIlloPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSowersPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateKalTikMasPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSefalorosPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateGalvransPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHarmonyPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMinorHackingPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateBasryxoPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateOracularsPopulation" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulation" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulationSelf0" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulationSelf1" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulationSelf2" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulationSelf3" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulationSelf4" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulationSelf5" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulationSelf6" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulationSelf7" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulationSelf8" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulationSelf9" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulationSelf10" Type="StarSystemImprovement"/>
+
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateCraversPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneCraversPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSophonsPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSophonsPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTerransPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTerransPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMezariPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMezariPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateSheredynPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneSheredynPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateHoratioPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneHoratioPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVenetiansPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVenetiansPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUnfallenPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUnfallenPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTimeLordsPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTimeLordsPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersSciencePopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersSciencePopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVaultersMilitaryPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVaultersMilitaryPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateMajorHisshosPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneMajorHisshosPopulationSelf11" Type="StarSystemImprovement"/>
+
+    <!--Umbral Choir-->
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateUmbralChoirPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneUmbralChoirPopulationSelf11" Type="StarSystemImprovement"/>
+
+    <!--Vodyani-->
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateVampirilisPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneVampirilisPopulationSelf11" Type="StarSystemImprovement"/>
+
+    <!--Nakalim-->
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulation" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulationSelf0" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulationSelf1" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulationSelf2" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulationSelf3" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulationSelf4" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulationSelf5" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulationSelf6" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulationSelf7" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulationSelf8" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulationSelf9" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulationSelf10" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementAssimilateTemplarsPopulationSelf11" Type="StarSystemImprovement"/>
+    <SimulationDescriptor Name="StarSystemImprovementCloneTemplarsPopulationSelf11" Type="StarSystemImprovement"/>
+
+    <!--Soylent Green-->
+    <SimulationDescriptor Name="TemporaryEffectSoylentGreenEffect" Type="TemporaryEffect">
+		<Modifier TargetProperty="SystemMoney" Operation="Percent" Value="0.10" Path="ClassColonizedStarSystem"/>  
+    </SimulationDescriptor>
+
+    <SimulationDescriptor Name="StarSystemImprovementSoylentGreen" Type="StarSystemImprovement"/>
+
+    <!--Faction Traits-->
+    <SimulationDescriptor Name="FactionTraitMinorCravers" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorSophons" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorTerrans" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorHoratio" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorTimeLords" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorVenetians" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorUnfallen" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorVaulters" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorMajorHisshos" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorMezari" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorSheredyn" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorVaultersScience" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorVaultersMilitary" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorVampirilis" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorUmbralChoir" Type="FactionTrait"/>
+    <SimulationDescriptor Name="FactionTraitMinorTemplars" Type="FactionTrait"/>
+		
+		
+		
+</Datatable>
