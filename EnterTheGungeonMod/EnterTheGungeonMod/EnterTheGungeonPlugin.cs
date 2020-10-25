@@ -30,7 +30,7 @@ namespace EnterTheGungeonMod
             static float initialCoolness = 10;
             static float chestChanceMult = 1f;
             static float reloadTimeMult = 1f;
-            static float spreadMult = 1f;
+            static float spreadMult = 0.75f;
 
             private static Dictionary<string, bool> firstRun = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase)
             {
@@ -83,7 +83,7 @@ namespace EnterTheGungeonMod
                 if (value > ___m_currency)
                 {
                     // currency Mult
-                    value = (int)Math.Round(___m_currency + currencyIncreaseMult * (value - ___m_currency));
+                    value = (int)(___m_currency + currencyIncreaseMult * (value - ___m_currency));
                 }
                 return true;
             }
@@ -171,7 +171,7 @@ namespace EnterTheGungeonMod
                     {
                         // Hegemony Credit increase
                         logger.LogInfo($"{currentHegemonyCredits} + {value - currentHegemonyCredits} * {creditIncreaseMult} = {(int)Math.Round(currentHegemonyCredits + creditIncreaseMult * (value - currentHegemonyCredits))}");
-                        value = (int)Math.Round(currentHegemonyCredits + creditIncreaseMult * (value - currentHegemonyCredits));
+                        value = (int)(currentHegemonyCredits + creditIncreaseMult * (value - currentHegemonyCredits));
                     }
                 }
             }
