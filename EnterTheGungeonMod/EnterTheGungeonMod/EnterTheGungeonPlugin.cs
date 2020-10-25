@@ -24,18 +24,28 @@ namespace EnterTheGungeonMod
         {
             static bool infiniteKeys = false;
             static bool currencyIncreaseOnly = false;
-            static bool currencyIncreaseDouble = true;
+            static float currencyIncreaseMult = 1.5f;
+            static float creditIncreaseMult = 2f;
+            static int maxMagnificence = 1;
+            static float initialCoolness = 10;
+            static float chestChanceMult = 1f;
+            static float reloadTimeMult = 1f;
+            static float spreadMult = 1f;
 
             private static Dictionary<string, bool> firstRun = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase)
             {
                 { "InfiniteKeys", true },
                 { "Currency", true },
-                { "Start", true }
+                { "Start", true },
+                { "DetermineCurrentMagnificence", true },
+                { "GetTargetQualityFromChances", true },
+                { "RegisterStatChange", true },
+                { "Gun.Update", true }
             };
 
             [HarmonyPatch(typeof(PlayerConsumables), "InfiniteKeys", MethodType.Setter)]
             [HarmonyPostfix]
-            static void Postfix(bool ___m_infiniteKeys)
+            static void Postfix(ref bool ___m_infiniteKeys)
             {
                 if (firstRun["InfiniteKeys"])
                 {
@@ -43,10 +53,7 @@ namespace EnterTheGungeonMod
                     firstRun["InfiniteKeys"] = false;
                 }
 
-                if (infiniteKeys)
-                {
-                    ___m_infiniteKeys = true;
-                }
+                ___m_infiniteKeys = infiniteKeys;
             }
 
 
@@ -73,16 +80,11 @@ namespace EnterTheGungeonMod
                     }
                 }
 
-                // double increases
-                if (currencyIncreaseDouble)
+                if (value > ___m_currency)
                 {
-                    if (value > ___m_currency)
-                    {
-                        value += (value - ___m_currency);
-                    }
-                    return true;
+                    // currency Mult
+                    value = (int)Math.Round(___m_currency + currencyIncreaseMult * (value - ___m_currency));
                 }
-
                 return true;
             }
 
@@ -102,7 +104,11 @@ namespace EnterTheGungeonMod
                     __instance.carriedConsumables.InfiniteKeys = true;
                 }
 
-                __instance.stats.SetBaseStatValue(PlayerStats.StatType.Coolness, 20, __instance);
+                PlayerStats stats = __instance.stats;
+                stats.SetBaseStatValue(PlayerStats.StatType.Coolness, initialCoolness, __instance);
+                // lower is better
+                stats.SetBaseStatValue(PlayerStats.StatType.ReloadSpeed, reloadTimeMult * stats.GetBaseStatValue(PlayerStats.StatType.ReloadSpeed), __instance);
+                stats.SetBaseStatValue(PlayerStats.StatType.Accuracy, spreadMult * stats.GetBaseStatValue(PlayerStats.StatType.Accuracy), __instance);
             }
 
 
@@ -110,6 +116,12 @@ namespace EnterTheGungeonMod
             [HarmonyPrefix]
             static bool Prefix(float __result)
             {
+                if (firstRun["DetermineCurrentMagnificence"])
+                {
+                    logger.LogInfo("Loaded ETGPlugin FloorRewardData DetermineCurrentMagnificence()");
+                    firstRun["DetermineCurrentMagnificence"] = false;
+                }
+
                 // Magnificence table
                 //0  0%
                 //1  79.84%
@@ -119,8 +131,12 @@ namespace EnterTheGungeonMod
                 //5  99.34% 
 
                 // Set magnificence to 0 to always have the same chance of getting A or S tier loot
-                __result = 0;
-                return false;
+                if (maxMagnificence > 0)
+                {
+                    __result = Math.Min(maxMagnificence, __result);
+                    return false;
+                }
+                return true;
             }
 
 
@@ -128,8 +144,53 @@ namespace EnterTheGungeonMod
             [HarmonyPrefix]
             static void Prefix(ref float fran, ref float dChance, ref float cChance, ref float bChance, ref float aChance, ref float sChance)
             {
+                if (firstRun["GetTargetQualityFromChances"])
+                {
+                    logger.LogInfo("Loaded ETGPlugin FloorRewardData GetTargetQualityFromChances()");
+                    firstRun["GetTargetQualityFromChances"] = false;
+                }
+
                 // More chance for higher quality
-                //fran += Math.Min(1, fran * 1.1f);
+                fran = Math.Min(1, fran * chestChanceMult);
+            }
+
+            [HarmonyPatch(typeof(GameStatsManager), "RegisterStatChange")]
+            [HarmonyPrefix]
+            static void Prefix(GameStatsManager __instance, TrackedStats stat, ref float value)
+            {
+                if (firstRun["RegisterStatChange"])
+                {
+                    logger.LogInfo("Loaded ETGPlugin GameStatsManager RegisterStatChange()");
+                    firstRun["RegisterStatChange"] = false;
+                }
+
+                if (stat.Equals(TrackedStats.META_CURRENCY))
+                {
+                    float currentHegemonyCredits = __instance.GetPlayerStatValue(TrackedStats.META_CURRENCY);
+                    if (value > currentHegemonyCredits)
+                    {
+                        // Hegemony Credit increase
+                        logger.LogInfo($"{currentHegemonyCredits} + {value - currentHegemonyCredits} * {creditIncreaseMult} = {(int)Math.Round(currentHegemonyCredits + creditIncreaseMult * (value - currentHegemonyCredits))}");
+                        value = (int)Math.Round(currentHegemonyCredits + creditIncreaseMult * (value - currentHegemonyCredits));
+                    }
+                }
+            }
+
+            [HarmonyPatch(typeof(Gun), "Update")]
+            [HarmonyPostfix]
+            static void Postfix(Gun __instance)
+            {
+                if (firstRun["Gun.Update"])
+                {
+                    logger.LogInfo("Loaded ETGPlugin Gun Update()");
+                    firstRun["Gun.Update"] = false;
+                }
+
+                // gun automatically reloads when clip empty
+                if (__instance.ClipShotsRemaining == 0)
+                {
+                    __instance.Reload();
+                }
             }
         }
     }
