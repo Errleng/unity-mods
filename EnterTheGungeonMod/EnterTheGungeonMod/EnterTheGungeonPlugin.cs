@@ -24,6 +24,8 @@ namespace EnterTheGungeonMod
         {
             static bool infiniteKeys = false;
             static bool currencyIncreaseOnly = false;
+            static bool fixSemiAutoFireRate = true;
+            static bool scouterHealthBars = false;
             static float currencyIncreaseMult = 1.5f;
             static float creditIncreaseMult = 2f;
             static int maxMagnificence = 1;
@@ -31,11 +33,13 @@ namespace EnterTheGungeonMod
             static float chestChanceMult = 1f;
             static float reloadTimeMult = 1f;
             static float spreadMult = 0.75f;
+            static GUI gui = new GUI();
 
             private static Dictionary<string, bool> firstRun = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase)
             {
                 { "InfiniteKeys", true },
                 { "Currency", true },
+                { "ControllerFakeSemiAutoCooldown", true },
                 { "Start", true },
                 { "DetermineCurrentMagnificence", true },
                 { "GetTargetQualityFromChances", true },
@@ -88,6 +92,24 @@ namespace EnterTheGungeonMod
                 return true;
             }
 
+            [HarmonyPatch(typeof(BraveInput), "ControllerFakeSemiAutoCooldown", MethodType.Getter)]
+            [HarmonyPostfix]
+            static void ControllerFakeSemiAutoCooldownPostfix(ref float __result)
+            {
+                if (firstRun["ControllerFakeSemiAutoCooldown"])
+                {
+                    logger.LogInfo("Loaded ETGPlugin BraveInput ControllerFakeSemiAutoCooldown getter");
+                    firstRun["ControllerFakeSemiAutoCooldown"] = false;
+                }
+
+                if (fixSemiAutoFireRate)
+                {
+                    // uses player's current gun's cooldown
+                    Gun currentGun = GameManager.Instance.PrimaryPlayer.CurrentGun;
+                    __result = currentGun.GetPrimaryCooldown();
+                }
+            }
+
 
             [HarmonyPatch(typeof(PlayerController), "Start")]
             [HarmonyPrefix]
@@ -104,6 +126,11 @@ namespace EnterTheGungeonMod
                     __instance.carriedConsumables.InfiniteKeys = true;
                 }
 
+                if (scouterHealthBars)
+                {
+                    gui.ToggleHealthBars(__instance, true);
+                }
+
                 PlayerStats stats = __instance.stats;
                 stats.SetBaseStatValue(PlayerStats.StatType.Coolness, initialCoolness, __instance);
                 // lower is better
@@ -114,7 +141,7 @@ namespace EnterTheGungeonMod
 
             [HarmonyPatch(typeof(FloorRewardData), "DetermineCurrentMagnificence")]
             [HarmonyPrefix]
-            static bool Prefix(float __result)
+            static bool Prefix(ref float __result)
             {
                 if (firstRun["DetermineCurrentMagnificence"])
                 {
