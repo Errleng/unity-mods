@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using UnityEngine;
 
 namespace EnterTheGungeonMod
 {
@@ -33,7 +32,7 @@ namespace EnterTheGungeonMod
             static float chestChanceMult = 1f;
             static float reloadTimeMult = 1f;
             static float spreadMult = 0.75f;
-            static GUI gui = new GUI();
+            static Utilities util;
 
             private static Dictionary<string, bool> firstRun = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase)
             {
@@ -46,6 +45,30 @@ namespace EnterTheGungeonMod
                 { "RegisterStatChange", true },
                 { "Gun.Update", true }
             };
+
+            [HarmonyPatch(typeof(PlayerController), "HandlePlayerInput")]
+            [HarmonyPostfix]
+            static void Postfix(PlayerController __instance)
+            {
+                if (__instance.AcceptingNonMotionInput)
+                {
+                    BraveInput instanceForPlayer = BraveInput.GetInstanceForPlayer(__instance.PlayerIDX);
+                    bool isKeyboard = instanceForPlayer.IsKeyboardAndMouse(false);
+                    if (isKeyboard)
+                    {
+                        if (Input.GetKeyDown(KeyCode.H))
+                        {
+                            logger.LogInfo($"Toggled health bars to {util.healthBars}");
+                            util.ToggleHealthBars();
+                        }
+                        if (Input.GetKeyDown(KeyCode.Z))
+                        {
+                            logger.LogInfo($"Toggled auto blank to {util.autoBlank}");
+                            util.ToggleAutoBlank();
+                        }
+                    }
+                }
+            }
 
             [HarmonyPatch(typeof(PlayerConsumables), "InfiniteKeys", MethodType.Setter)]
             [HarmonyPostfix]
@@ -115,6 +138,8 @@ namespace EnterTheGungeonMod
             [HarmonyPrefix]
             static void Prefix(PlayerController __instance)
             {
+                util = new Utilities(__instance);
+
                 if (firstRun["Start"])
                 {
                     logger.LogInfo("Loaded ETGPlugin PlayerController Start()");
@@ -128,7 +153,7 @@ namespace EnterTheGungeonMod
 
                 if (scouterHealthBars)
                 {
-                    gui.ToggleHealthBars(__instance, true);
+                    util.ToggleHealthBars(true);
                 }
 
                 PlayerStats stats = __instance.stats;
