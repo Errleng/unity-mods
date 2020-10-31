@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -11,40 +13,46 @@ namespace EnterTheGungeonMod
     public class EnterTheGungeonPlugin : BaseUnityPlugin
     {
         static ManualLogSource logger;
+        static Utilities util;
 
         private void Awake()
         {
             logger = Logger;
             logger.LogInfo("Enter The Gungeon plugin loaded!");
-            Harmony.CreateAndPatchAll(typeof(Patch));
+            Harmony.CreateAndPatchAll(typeof(MinorPatches));
+            Harmony.CreateAndPatchAll(typeof(PlayerProjectilePatches));
         }
 
-        public class Patch
+
+        private static Dictionary<string, bool> firstRun = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase)
+        {
+            { "InfiniteKeys", true },
+            { "Currency", true },
+            { "ControllerFakeSemiAutoCooldown", true },
+            { "Start", true },
+            { "DetermineCurrentMagnificence", true },
+            { "GetTargetQualityFromChances", true },
+            { "SpawnCurrency", true },
+            { "Gun.Update", true },
+            { "Projectile.Update", true }
+        };
+
+
+        public class MinorPatches
         {
             static bool infiniteKeys = false;
             static bool currencyIncreaseOnly = false;
             static bool fixSemiAutoFireRate = true;
             static bool scouterHealthBars = false;
-            static float currencyIncreaseMult = 1.5f;
-            static float creditIncreaseMult = 2f;
-            static int maxMagnificence = 1;
+            static float currencyDropMult = 1.5f;
+            static float creditDropMult = 2f;
+            static int maxMagnificence = 0;
             static float initialCoolness = 10;
             static float chestChanceMult = 1f;
             static float reloadTimeMult = 1f;
             static float spreadMult = 0.75f;
-            static Utilities util;
+            static float fireRateMult = 1;
 
-            private static Dictionary<string, bool> firstRun = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase)
-            {
-                { "InfiniteKeys", true },
-                { "Currency", true },
-                { "ControllerFakeSemiAutoCooldown", true },
-                { "Start", true },
-                { "DetermineCurrentMagnificence", true },
-                { "GetTargetQualityFromChances", true },
-                { "RegisterStatChange", true },
-                { "Gun.Update", true }
-            };
 
             [HarmonyPatch(typeof(PlayerController), "HandlePlayerInput")]
             [HarmonyPostfix]
@@ -58,13 +66,17 @@ namespace EnterTheGungeonMod
                     {
                         if (Input.GetKeyDown(KeyCode.H))
                         {
-                            logger.LogInfo($"Toggled health bars to {util.healthBars}");
                             util.ToggleHealthBars();
+                            logger.LogInfo($"Toggled health bars to {util.healthBars}");
                         }
                         if (Input.GetKeyDown(KeyCode.Z))
                         {
-                            logger.LogInfo($"Toggled auto blank to {util.autoBlank}");
                             util.ToggleAutoBlank();
+                            logger.LogInfo($"Toggled auto blank to {util.autoBlank}");
+                        }
+                        if (Input.GetKeyDown(KeyCode.G))
+                        {
+                            SilencerInstance.DestroyBulletsInRange(GameManager.Instance.PrimaryPlayer.CenterPosition, 10000, true, true);
                         }
                     }
                 }
@@ -84,37 +96,6 @@ namespace EnterTheGungeonMod
             }
 
 
-            [HarmonyPatch(typeof(PlayerConsumables), "Currency", MethodType.Setter)]
-            [HarmonyPrefix]
-            static bool Prefix(ref int value, int ___m_currency)
-            {
-                if (firstRun["Currency"])
-                {
-                    logger.LogInfo("Loaded ETGPlugin PlayerConsumables Currency setter");
-                    firstRun["Currency"] = false;
-                }
-
-                // only allow increases
-                if (currencyIncreaseOnly)
-                {
-                    if (value > ___m_currency)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-
-                if (value > ___m_currency)
-                {
-                    // currency Mult
-                    value = (int)(___m_currency + currencyIncreaseMult * (value - ___m_currency));
-                }
-                return true;
-            }
-
             [HarmonyPatch(typeof(BraveInput), "ControllerFakeSemiAutoCooldown", MethodType.Getter)]
             [HarmonyPostfix]
             static void ControllerFakeSemiAutoCooldownPostfix(ref float __result)
@@ -128,8 +109,9 @@ namespace EnterTheGungeonMod
                 if (fixSemiAutoFireRate)
                 {
                     // uses player's current gun's cooldown
-                    Gun currentGun = GameManager.Instance.PrimaryPlayer.CurrentGun;
-                    __result = currentGun.GetPrimaryCooldown();
+                    //Gun currentGun = GameManager.Instance.PrimaryPlayer.CurrentGun;
+                    //__result = currentGun.GetPrimaryCooldown();
+                    __result = 0;
                 }
             }
 
@@ -161,6 +143,7 @@ namespace EnterTheGungeonMod
                 // lower is better
                 stats.SetBaseStatValue(PlayerStats.StatType.ReloadSpeed, reloadTimeMult * stats.GetBaseStatValue(PlayerStats.StatType.ReloadSpeed), __instance);
                 stats.SetBaseStatValue(PlayerStats.StatType.Accuracy, spreadMult * stats.GetBaseStatValue(PlayerStats.StatType.Accuracy), __instance);
+                stats.SetBaseStatValue(PlayerStats.StatType.RateOfFire, fireRateMult * stats.GetBaseStatValue(PlayerStats.StatType.RateOfFire), __instance);
             }
 
 
@@ -206,26 +189,28 @@ namespace EnterTheGungeonMod
                 fran = Math.Min(1, fran * chestChanceMult);
             }
 
-            [HarmonyPatch(typeof(GameStatsManager), "RegisterStatChange")]
+            [HarmonyPatch(typeof(LootEngine), "SpawnCurrency",
+                new Type[] { typeof(Vector2), typeof(int), typeof(bool), typeof(Vector2), typeof(float), typeof(float), typeof(float) })]
             [HarmonyPrefix]
-            static void Prefix(GameStatsManager __instance, TrackedStats stat, ref float value)
+            static void Prefix(bool isMetaCurrency, ref int amountToDrop)
             {
-                if (firstRun["RegisterStatChange"])
+                if (firstRun["SpawnCurrency"])
                 {
-                    logger.LogInfo("Loaded ETGPlugin GameStatsManager RegisterStatChange()");
-                    firstRun["RegisterStatChange"] = false;
+                    logger.LogInfo("Loaded ETGPlugin LootEngine SpawnCurrency()");
+                    firstRun["SpawnCurrency"] = false;
                 }
 
-                if (stat.Equals(TrackedStats.META_CURRENCY))
+                int pastVal = amountToDrop;
+                if (isMetaCurrency)
                 {
-                    float currentHegemonyCredits = __instance.GetPlayerStatValue(TrackedStats.META_CURRENCY);
-                    if (value > currentHegemonyCredits)
-                    {
-                        // Hegemony Credit increase
-                        logger.LogInfo($"{currentHegemonyCredits} + {value - currentHegemonyCredits} * {creditIncreaseMult} = {(int)Math.Round(currentHegemonyCredits + creditIncreaseMult * (value - currentHegemonyCredits))}");
-                        value = (int)(currentHegemonyCredits + creditIncreaseMult * (value - currentHegemonyCredits));
-                    }
+                    amountToDrop = (int)(amountToDrop * creditDropMult);
                 }
+                else
+                {
+                    amountToDrop = (int)(amountToDrop * currencyDropMult);
+                }
+
+                logger.LogInfo($"Currency: {pastVal} -> {amountToDrop}");
             }
 
             [HarmonyPatch(typeof(Gun), "Update")]
@@ -243,6 +228,83 @@ namespace EnterTheGungeonMod
                 {
                     __instance.Reload();
                 }
+            }
+
+        }
+
+        public class PlayerProjectilePatches
+        {
+            const bool SPLIT_SHOTS = false;
+            const int SHOTS_PER_LIFE = 0;
+            const float MAX_DEVIATION = 10f;
+            static Dictionary<Projectile, float> splitProjs = new Dictionary<Projectile, float>();
+
+            [HarmonyPatch(typeof(Projectile), "Update")]
+            [HarmonyPostfix]
+            static void Postfix(Projectile __instance)
+            {
+                if (firstRun["Projectile.Update"])
+                {
+                    logger.LogInfo("Loaded ETGPlugin Projectile Update()");
+                    firstRun["Projectile.Update"] = false;
+                }
+
+
+                if (__instance.Owner is PlayerController)
+                {
+                    __instance.ResetDistance();
+                    BounceProjModifier bounceMod = __instance.gameObject.GetOrAddComponent<BounceProjModifier>();
+                    if (bounceMod != null)
+                    {
+                        bounceMod.numberOfBounces = 1;
+                    }
+
+                    if (SPLIT_SHOTS)
+                    {
+                        float lifetime = __instance.baseData.range / __instance.Speed;
+                        if (splitProjs.ContainsKey(__instance))
+                        {
+
+                            float remainingTime = splitProjs[__instance];
+                            if (remainingTime <= 0)
+                            {
+                                float projectileAngle = BraveMathCollege.Atan2Degrees(__instance.Direction);
+                                float fuzzyAngle = projectileAngle + UnityEngine.Random.Range(-MAX_DEVIATION, MAX_DEVIATION);
+                                splitProjs[__instance] = lifetime;
+                                ShootSingleProjectile(__instance, __instance.transform.position, fuzzyAngle);
+                            }
+                            else
+                            {
+                                splitProjs[__instance] = remainingTime - BraveTime.DeltaTime;
+                            }
+                        }
+                        else
+                        {
+                            Dictionary<Projectile, float> aliveProjs = (from kvp in splitProjs
+                                                                        where kvp.Key != null
+                                                                        select kvp).ToDictionary(kv => kv.Key, kv => kv.Value);
+                            splitProjs = aliveProjs;
+                            splitProjs.Add(__instance, lifetime / (1 + SHOTS_PER_LIFE));
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private static void ShootSingleProjectile(Projectile projectile, Vector2 spawnPosition, float angle)
+        {
+            GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, spawnPosition.ToVector3ZUp(spawnPosition.y), Quaternion.Euler(0f, 0f, angle), true);
+            Projectile component = gameObject.GetComponent<Projectile>();
+            component.Owner = projectile.Owner;
+            component.Shooter = component.Owner.specRigidbody;
+            if (component.Owner is PlayerController)
+            {
+                PlayerStats stats = (component.Owner as PlayerController).stats;
+                component.baseData.damage *= stats.GetStatValue(PlayerStats.StatType.Damage);
+                component.baseData.speed *= stats.GetStatValue(PlayerStats.StatType.ProjectileSpeed);
+                component.baseData.force *= stats.GetStatValue(PlayerStats.StatType.KnockbackMultiplier);
+                (component.Owner as PlayerController).DoPostProcessProjectile(component);
             }
         }
     }
