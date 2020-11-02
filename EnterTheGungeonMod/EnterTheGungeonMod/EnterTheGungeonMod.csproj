@@ -66,6 +66,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetDir)$(ProjectName).dll" "C:/Extracted/Games/EtG/BepInEx/plugins"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(ProjectName).dll" "C:\Program Files (x86)/Steam/steamapps/common/Enter the Gungeon/BepInEx/plugins"</PostBuildEvent>
   </PropertyGroup>
 </Project>

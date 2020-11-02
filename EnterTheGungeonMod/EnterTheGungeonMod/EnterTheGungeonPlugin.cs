@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using BepInEx;
+using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using UnityEngine;
@@ -12,15 +12,59 @@ namespace EnterTheGungeonMod
     [BepInPlugin("org.bepinex.plugins.enterthegungeonplugin", "Enter The Gungeon Plugin", "1.0.0.0")]
     public class EnterTheGungeonPlugin : BaseUnityPlugin
     {
+        static readonly string[] JUNKAN_COMBAT_SPEECH =
+        {
+            "HASAGI",
+            "ASERYO"
+        };
+
+        const string minorPatchHeading = "General";
+        const string majorPatchHeading = "Major";
+
         static ManualLogSource logger;
         static Utilities util;
 
+        static bool infiniteKeys = false;
+        static bool currencyIncreaseOnly = false;
+        static bool fixSemiAutoFireRate = true;
+        static bool scouterHealthBars = false;
+        static float currencyDropMult = 1.5f;
+        static float creditDropMult = 2f;
+        static int maxMagnificence = 0;
+        static float initialCoolness = 10;
+        static float chestChanceMult = 1f;
+        static float reloadTimeMult = 1f;
+        static float spreadMult = 0.75f;
+        static float rateOfFireMult = 1;
+
+        private static ConfigFile config;
+        private static ConfigEntry<float> configReloadTimeMult;
+        private static ConfigEntry<float> configSpreadMult;
+        private static ConfigEntry<float> configRateOfFireMult;
+        private static ConfigEntry<int> configJunkanSpeakChance;
+        private static ConfigEntry<string[]> configJunkanSpeech;
+
         private void Awake()
         {
+            config = Config;
+            initConfig();
+
             logger = Logger;
             logger.LogInfo("Enter The Gungeon plugin loaded!");
             Harmony.CreateAndPatchAll(typeof(MinorPatches));
             Harmony.CreateAndPatchAll(typeof(PlayerProjectilePatches));
+            Harmony.CreateAndPatchAll(typeof(CompanionPatches));
+        }
+
+
+        private static void initConfig()
+        {
+            configReloadTimeMult = config.Bind(minorPatchHeading, "reloadTimeMult", 1f, "Player reload cooldown multiplier");
+            configSpreadMult = config.Bind(minorPatchHeading, "spreadMult", 1f, "Player shooting spread multiplier");
+            configReloadTimeMult = config.Bind(minorPatchHeading, "rateOfFireMult", 1f, "Player rate of fire multiplier");
+            configJunkanSpeakChance = config.Bind(majorPatchHeading, "junkanSpeakChance", 20, "Ser Junkan combat speak chance");
+
+            configJunkanSpeech = config.Bind(majorPatchHeading, "junkanSpeech", JUNKAN_COMBAT_SPEECH, "Ser Junkan combat text");
         }
 
 
@@ -40,19 +84,6 @@ namespace EnterTheGungeonMod
 
         public class MinorPatches
         {
-            static bool infiniteKeys = false;
-            static bool currencyIncreaseOnly = false;
-            static bool fixSemiAutoFireRate = true;
-            static bool scouterHealthBars = false;
-            static float currencyDropMult = 1.5f;
-            static float creditDropMult = 2f;
-            static int maxMagnificence = 0;
-            static float initialCoolness = 10;
-            static float chestChanceMult = 1f;
-            static float reloadTimeMult = 1f;
-            static float spreadMult = 0.75f;
-            static float fireRateMult = 1;
-
 
             [HarmonyPatch(typeof(PlayerController), "HandlePlayerInput")]
             [HarmonyPostfix]
@@ -143,7 +174,21 @@ namespace EnterTheGungeonMod
                 // lower is better
                 stats.SetBaseStatValue(PlayerStats.StatType.ReloadSpeed, reloadTimeMult * stats.GetBaseStatValue(PlayerStats.StatType.ReloadSpeed), __instance);
                 stats.SetBaseStatValue(PlayerStats.StatType.Accuracy, spreadMult * stats.GetBaseStatValue(PlayerStats.StatType.Accuracy), __instance);
-                stats.SetBaseStatValue(PlayerStats.StatType.RateOfFire, fireRateMult * stats.GetBaseStatValue(PlayerStats.StatType.RateOfFire), __instance);
+                stats.SetBaseStatValue(PlayerStats.StatType.RateOfFire, rateOfFireMult * stats.GetBaseStatValue(PlayerStats.StatType.RateOfFire), __instance);
+
+
+                PickupObject junk = PickupObjectDatabase.GetById(GlobalItemIds.Junk);
+                junk.Pickup(__instance);
+                PickupObject junkan = PickupObjectDatabase.GetById(GlobalItemIds.SackKnightBoon);
+                junkan.Pickup(__instance);
+            }
+
+
+            [HarmonyPatch(typeof(GameManager), "DelayedLoadCustomLevel")]
+            [HarmonyPostfix]
+            static void Postfix()
+            {
+
             }
 
 
@@ -189,6 +234,7 @@ namespace EnterTheGungeonMod
                 fran = Math.Min(1, fran * chestChanceMult);
             }
 
+
             [HarmonyPatch(typeof(LootEngine), "SpawnCurrency",
                 new Type[] { typeof(Vector2), typeof(int), typeof(bool), typeof(Vector2), typeof(float), typeof(float), typeof(float) })]
             [HarmonyPrefix]
@@ -213,6 +259,7 @@ namespace EnterTheGungeonMod
                 logger.LogInfo($"Currency: {pastVal} -> {amountToDrop}");
             }
 
+
             [HarmonyPatch(typeof(Gun), "Update")]
             [HarmonyPostfix]
             static void Postfix(Gun __instance)
@@ -234,9 +281,9 @@ namespace EnterTheGungeonMod
 
         public class PlayerProjectilePatches
         {
-            const bool SPLIT_SHOTS = false;
-            const int SHOTS_PER_LIFE = 0;
-            const float MAX_DEVIATION = 10f;
+            const bool SPLIT_SHOTS = true;
+            const int SHOTS_PER_LIFE = 4;
+            const float MAX_DEVIATION = 45f;
             static Dictionary<Projectile, float> splitProjs = new Dictionary<Projectile, float>();
 
             [HarmonyPatch(typeof(Projectile), "Update")]
@@ -252,12 +299,19 @@ namespace EnterTheGungeonMod
 
                 if (__instance.Owner is PlayerController)
                 {
-                    __instance.ResetDistance();
-                    BounceProjModifier bounceMod = __instance.gameObject.GetOrAddComponent<BounceProjModifier>();
-                    if (bounceMod != null)
-                    {
-                        bounceMod.numberOfBounces = 1;
-                    }
+                    //__instance.ResetDistance();
+                    //BounceProjModifier bounceMod = __instance.gameObject.GetOrAddComponent<BounceProjModifier>();
+                    //if (bounceMod != null)
+                    //{
+                    //    bounceMod.numberOfBounces = 1;
+                    //}
+
+                    //HomingModifier homingMod = __instance.gameObject.GetOrAddComponent<HomingModifier>();
+                    //if (homingMod != null)
+                    //{
+                    //    homingMod.AngularVelocity = 90;
+                    //    homingMod.HomingRadius = 100;
+                    //}
 
                     if (SPLIT_SHOTS)
                     {
@@ -289,22 +343,80 @@ namespace EnterTheGungeonMod
                     }
                 }
             }
+
+            private static void ShootSingleProjectile(Projectile projectile, Vector2 spawnPosition, float angle)
+            {
+                GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, spawnPosition.ToVector3ZUp(spawnPosition.y), Quaternion.Euler(0f, 0f, angle), true);
+                Projectile component = gameObject.GetComponent<Projectile>();
+                component.Owner = projectile.Owner;
+                component.Shooter = component.Owner.specRigidbody;
+                if (component.Owner is PlayerController)
+                {
+                    PlayerStats stats = (component.Owner as PlayerController).stats;
+                    component.baseData.damage *= stats.GetStatValue(PlayerStats.StatType.Damage);
+                    component.baseData.speed *= stats.GetStatValue(PlayerStats.StatType.ProjectileSpeed);
+                    component.baseData.force *= stats.GetStatValue(PlayerStats.StatType.KnockbackMultiplier);
+                    (component.Owner as PlayerController).DoPostProcessProjectile(component);
+                }
+            }
         }
 
 
-        private static void ShootSingleProjectile(Projectile projectile, Vector2 spawnPosition, float angle)
+        public class TextBoxSeries
         {
-            GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, spawnPosition.ToVector3ZUp(spawnPosition.y), Quaternion.Euler(0f, 0f, angle), true);
-            Projectile component = gameObject.GetComponent<Projectile>();
-            component.Owner = projectile.Owner;
-            component.Shooter = component.Owner.specRigidbody;
-            if (component.Owner is PlayerController)
+            private const int TEXTBOX_MAX_CHARS = 500;
+            public List<string> texts { get; }
+
+            TextBoxSeries(string text)
             {
-                PlayerStats stats = (component.Owner as PlayerController).stats;
-                component.baseData.damage *= stats.GetStatValue(PlayerStats.StatType.Damage);
-                component.baseData.speed *= stats.GetStatValue(PlayerStats.StatType.ProjectileSpeed);
-                component.baseData.force *= stats.GetStatValue(PlayerStats.StatType.KnockbackMultiplier);
-                (component.Owner as PlayerController).DoPostProcessProjectile(component);
+                texts = new List<string>();
+                int length = text.Length;
+                while (length > TEXTBOX_MAX_CHARS)
+                {
+                    texts.Add(text.Substring(0, TEXTBOX_MAX_CHARS));
+                    length -= TEXTBOX_MAX_CHARS;
+                }
+            }
+        }
+
+
+        public class CompanionPatches
+        {
+            const float JUNKAN_SPEECH_DURATION = 5f;
+
+            static System.Random random = new System.Random();
+            static float junkanSpeechTimer;
+
+
+            [HarmonyPatch(typeof(SackKnightController), "Update")]
+            [HarmonyPostfix]
+            static void Postfix(SackKnightController __instance)
+            {
+                __instance.aiActor.MovementSpeed *= 1;
+                junkanSpeechTimer -= BraveTime.DeltaTime;
+            }
+
+
+            [HarmonyPatch(typeof(SackKnightAttackBehavior), "CurrentFormCooldown", MethodType.Getter)]
+            [HarmonyPostfix]
+            static void Postfix(ref float __result)
+            {
+                __result /= 4;
+            }
+
+
+            [HarmonyPatch(typeof(SackKnightAttackBehavior), "DoAttack")]
+            [HarmonyPostfix]
+            static void Postfix(SackKnightAttackBehavior __instance, AIActor ___m_aiActor)
+            {
+                if (junkanSpeechTimer <= 0 && random.Next(100) <= configJunkanSpeakChance.Value)
+                {
+                    junkanSpeechTimer = JUNKAN_SPEECH_DURATION;
+                    string quip = configJunkanSpeech.Value[random.Next(configJunkanSpeech.Value.Length)];
+                    Vector3 offset = new Vector3(0.75f, 1f, 0f);
+                    TextBoxManager.ClearTextBox(___m_aiActor.transform);
+                    TextBoxManager.ShowTextBox(___m_aiActor.transform.position + offset, ___m_aiActor.transform, JUNKAN_SPEECH_DURATION, quip, "", false, TextBoxManager.BoxSlideOrientation.NO_ADJUSTMENT, false, false);
+                }
             }
         }
     }
