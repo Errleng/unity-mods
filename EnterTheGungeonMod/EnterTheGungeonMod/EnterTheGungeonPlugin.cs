@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using BepInEx;
 using BepInEx.Configuration;
@@ -12,11 +14,7 @@ namespace EnterTheGungeonMod
     [BepInPlugin("org.bepinex.plugins.enterthegungeonplugin", "Enter The Gungeon Plugin", "1.0.0.0")]
     public class EnterTheGungeonPlugin : BaseUnityPlugin
     {
-        static readonly string[] JUNKAN_COMBAT_SPEECH =
-        {
-            "HASAGI",
-            "ASERYO"
-        };
+        static string[] junkanCombatSpeech;
 
         const string minorPatchHeading = "General";
         const string majorPatchHeading = "Major";
@@ -33,40 +31,50 @@ namespace EnterTheGungeonMod
         static int maxMagnificence = 0;
         static float initialCoolness = 10;
         static float chestChanceMult = 1f;
-        static float reloadTimeMult = 1f;
-        static float spreadMult = 0.75f;
-        static float rateOfFireMult = 1;
 
         private static ConfigFile config;
         private static ConfigEntry<float> configReloadTimeMult;
         private static ConfigEntry<float> configSpreadMult;
         private static ConfigEntry<float> configRateOfFireMult;
         private static ConfigEntry<int> configJunkanSpeakChance;
-        private static ConfigEntry<string[]> configJunkanSpeech;
 
         private void Awake()
         {
+            logger = Logger;
+            logger.LogInfo("Enter The Gungeon plugin loaded!");
+
+            ReadFiles();
+
             config = Config;
             initConfig();
 
-            logger = Logger;
-            logger.LogInfo("Enter The Gungeon plugin loaded!");
             Harmony.CreateAndPatchAll(typeof(MinorPatches));
             Harmony.CreateAndPatchAll(typeof(PlayerProjectilePatches));
             Harmony.CreateAndPatchAll(typeof(CompanionPatches));
         }
 
-
         private static void initConfig()
         {
             configReloadTimeMult = config.Bind(minorPatchHeading, "reloadTimeMult", 1f, "Player reload cooldown multiplier");
             configSpreadMult = config.Bind(minorPatchHeading, "spreadMult", 1f, "Player shooting spread multiplier");
-            configReloadTimeMult = config.Bind(minorPatchHeading, "rateOfFireMult", 1f, "Player rate of fire multiplier");
-            configJunkanSpeakChance = config.Bind(majorPatchHeading, "junkanSpeakChance", 20, "Ser Junkan combat speak chance");
-
-            configJunkanSpeech = config.Bind(majorPatchHeading, "junkanSpeech", JUNKAN_COMBAT_SPEECH, "Ser Junkan combat text");
+            configRateOfFireMult = config.Bind(minorPatchHeading, "rateOfFireMult", 1f, "Player rate of fire multiplier");
+            configJunkanSpeakChance = config.Bind(majorPatchHeading, "junkanSpeakChance", 100, "Ser Junkan combat speak chance");
         }
 
+        private static void ReadFiles()
+        {
+            logger.LogInfo($"Current directory: {Directory.GetCurrentDirectory()}");
+            junkanCombatSpeech = File.ReadAllLines("junkan-combat-speech.txt");
+        }
+
+        private static void SpawnItems()
+        {
+            PlayerController player = GameManager.Instance.PrimaryPlayer;
+            PickupObject junk = PickupObjectDatabase.GetById(GlobalItemIds.Junk);
+            junk.Pickup(player);
+            PickupObject junkan = PickupObjectDatabase.GetById(GlobalItemIds.SackKnightBoon);
+            junkan.Pickup(player);
+        }
 
         private static Dictionary<string, bool> firstRun = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase)
         {
@@ -108,6 +116,14 @@ namespace EnterTheGungeonMod
                         if (Input.GetKeyDown(KeyCode.G))
                         {
                             SilencerInstance.DestroyBulletsInRange(GameManager.Instance.PrimaryPlayer.CenterPosition, 10000, true, true);
+                        }
+                        if (Input.GetKeyDown(KeyCode.I))
+                        {
+                            ReadFiles();
+                        }
+                        if (Input.GetKeyDown(KeyCode.U))
+                        {
+                            SpawnItems();
                         }
                     }
                 }
@@ -172,15 +188,9 @@ namespace EnterTheGungeonMod
                 PlayerStats stats = __instance.stats;
                 stats.SetBaseStatValue(PlayerStats.StatType.Coolness, initialCoolness, __instance);
                 // lower is better
-                stats.SetBaseStatValue(PlayerStats.StatType.ReloadSpeed, reloadTimeMult * stats.GetBaseStatValue(PlayerStats.StatType.ReloadSpeed), __instance);
-                stats.SetBaseStatValue(PlayerStats.StatType.Accuracy, spreadMult * stats.GetBaseStatValue(PlayerStats.StatType.Accuracy), __instance);
-                stats.SetBaseStatValue(PlayerStats.StatType.RateOfFire, rateOfFireMult * stats.GetBaseStatValue(PlayerStats.StatType.RateOfFire), __instance);
-
-
-                PickupObject junk = PickupObjectDatabase.GetById(GlobalItemIds.Junk);
-                junk.Pickup(__instance);
-                PickupObject junkan = PickupObjectDatabase.GetById(GlobalItemIds.SackKnightBoon);
-                junkan.Pickup(__instance);
+                stats.SetBaseStatValue(PlayerStats.StatType.ReloadSpeed, configReloadTimeMult.Value * stats.GetBaseStatValue(PlayerStats.StatType.ReloadSpeed), __instance);
+                stats.SetBaseStatValue(PlayerStats.StatType.Accuracy, configSpreadMult.Value * stats.GetBaseStatValue(PlayerStats.StatType.Accuracy), __instance);
+                stats.SetBaseStatValue(PlayerStats.StatType.RateOfFire, configRateOfFireMult.Value * stats.GetBaseStatValue(PlayerStats.StatType.RateOfFire), __instance);
             }
 
 
@@ -362,60 +372,136 @@ namespace EnterTheGungeonMod
         }
 
 
-        public class TextBoxSeries
+        public class TextBoxSeries : MonoBehaviour
         {
             private const int TEXTBOX_MAX_CHARS = 500;
-            public List<string> texts { get; }
 
-            TextBoxSeries(string text)
+            private float TEXT_REVEAL_SPEED
+            {
+                get
+                {
+                    switch (GameManager.Options.TextSpeed)
+                    {
+                        case GameOptions.GenericHighMedLowOption.LOW:
+                            return 27f;
+                        case GameOptions.GenericHighMedLowOption.MEDIUM:
+                            return 100f;
+                        case GameOptions.GenericHighMedLowOption.HIGH:
+                            return float.MaxValue;
+                        default:
+                            return 100f;
+                    }
+                }
+            }
+
+            public List<string> texts { get; set; }
+
+            public void Init(string text)
             {
                 texts = new List<string>();
-                int length = text.Length;
-                while (length > TEXTBOX_MAX_CHARS)
+                string[] words = text.Split(' ');
+                string curText = "";
+                foreach (string word in words)
                 {
-                    texts.Add(text.Substring(0, TEXTBOX_MAX_CHARS));
-                    length -= TEXTBOX_MAX_CHARS;
+                    if ((curText + word).Length >= TEXTBOX_MAX_CHARS)
+                    {
+                        texts.Add(curText);
+                        curText = word;
+                    }
+                    else
+                    {
+                        if (curText.Length == 0)
+                        {
+                            curText = word;
+                        }
+                        else
+                        {
+                            curText += " " + word;
+                        }
+                    }
                 }
+                texts.Add(curText);
+            }
+
+
+            public float ShowTextTime(string text)
+            {
+                return 1 + text.Length / TEXT_REVEAL_SPEED;
+            }
+
+            private IEnumerator ShowTextBoxes(AIActor actor, Vector3 offset)
+            {
+                foreach (string text in texts)
+                {
+                    float time = ShowTextTime(text);
+                    TextBoxManager.ShowTextBox(actor.transform.position + offset, actor.transform, time, text, "", false, TextBoxManager.BoxSlideOrientation.NO_ADJUSTMENT, false, false);
+                    yield return new WaitForSeconds(time);
+                    TextBoxManager.ClearTextBox(actor.transform);
+                }
+                yield return new WaitForSeconds(1f);
+                yield break;
+            }
+
+            public float TotalSpeakLength()
+            {
+                float sum = 0;
+                foreach (string text in texts)
+                {
+                    sum += ShowTextTime(text);
+                }
+                return sum;
+            }
+
+            public void Speak(AIActor actor, Vector3 offset)
+            {
+                StartCoroutine(ShowTextBoxes(actor, offset));
             }
         }
 
 
         public class CompanionPatches
         {
-            const float JUNKAN_SPEECH_DURATION = 5f;
-
             static System.Random random = new System.Random();
             static float junkanSpeechTimer;
 
 
             [HarmonyPatch(typeof(SackKnightController), "Update")]
             [HarmonyPostfix]
-            static void Postfix(SackKnightController __instance)
+            static void UpdatePostfix(SackKnightController __instance)
             {
-                __instance.aiActor.MovementSpeed *= 1;
                 junkanSpeechTimer -= BraveTime.DeltaTime;
             }
 
+            [HarmonyPatch(typeof(SackKnightController), "Start")]
+            [HarmonyPostfix]
+            static void StartPostfix(SackKnightController __instance)
+            {
+                __instance.aiActor.MovementSpeed *= 5;
+            }
 
             [HarmonyPatch(typeof(SackKnightAttackBehavior), "CurrentFormCooldown", MethodType.Getter)]
             [HarmonyPostfix]
             static void Postfix(ref float __result)
             {
-                __result /= 4;
+                __result /= 10;
             }
 
 
             [HarmonyPatch(typeof(SackKnightAttackBehavior), "DoAttack")]
             [HarmonyPostfix]
-            static void Postfix(SackKnightAttackBehavior __instance, AIActor ___m_aiActor)
+            static void Postfix(AIActor ___m_aiActor)
             {
-                if (junkanSpeechTimer <= 0 && random.Next(100) <= configJunkanSpeakChance.Value)
+                int speechRoll = random.Next(100);
+                if (junkanSpeechTimer <= 0 && speechRoll <= configJunkanSpeakChance.Value)
                 {
-                    junkanSpeechTimer = JUNKAN_SPEECH_DURATION;
-                    string quip = configJunkanSpeech.Value[random.Next(configJunkanSpeech.Value.Length)];
                     Vector3 offset = new Vector3(0.75f, 1f, 0f);
-                    TextBoxManager.ClearTextBox(___m_aiActor.transform);
-                    TextBoxManager.ShowTextBox(___m_aiActor.transform.position + offset, ___m_aiActor.transform, JUNKAN_SPEECH_DURATION, quip, "", false, TextBoxManager.BoxSlideOrientation.NO_ADJUSTMENT, false, false);
+                    GameObject gameObj = new GameObject("PlayerController");
+                    TextBoxSeries quip = gameObj.AddComponent<TextBoxSeries>();
+                    int chosenSpeech = random.Next(junkanCombatSpeech.Length);
+                    quip.Init(junkanCombatSpeech[chosenSpeech]);
+                    junkanSpeechTimer = quip.TotalSpeakLength();
+                    logger.LogInfo($"JUNKAN: {junkanSpeechTimer}, {chosenSpeech}, {speechRoll}");
+                    quip.Speak(___m_aiActor, offset);
                 }
             }
         }
