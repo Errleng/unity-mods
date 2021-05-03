@@ -291,7 +291,7 @@ namespace EnterTheGungeonMod
 
         public class PlayerProjectilePatches
         {
-            const bool SPLIT_SHOTS = true;
+            const bool SPLIT_SHOTS = false;
             const int SHOTS_PER_LIFE = 4;
             const float MAX_DEVIATION = 45f;
             static Dictionary<Projectile, float> splitProjs = new Dictionary<Projectile, float>();
@@ -374,7 +374,7 @@ namespace EnterTheGungeonMod
 
         public class TextBoxSeries : MonoBehaviour
         {
-            private const int TEXTBOX_MAX_CHARS = 500;
+            private const int TEXTBOX_MAX_CHARS = 100;
 
             private float TEXT_REVEAL_SPEED
             {
@@ -465,18 +465,18 @@ namespace EnterTheGungeonMod
             static float junkanSpeechTimer;
 
 
+            [HarmonyPatch(typeof(SackKnightController), MethodType.Constructor)]
+            [HarmonyPostfix]
+            static void SackKnightControllerConstructor(SackKnightController __instance)
+            {
+                __instance.aiActor.MovementSpeed *= 5;
+            }
+
             [HarmonyPatch(typeof(SackKnightController), "Update")]
             [HarmonyPostfix]
             static void UpdatePostfix(SackKnightController __instance)
             {
                 junkanSpeechTimer -= BraveTime.DeltaTime;
-            }
-
-            [HarmonyPatch(typeof(SackKnightController), "Start")]
-            [HarmonyPostfix]
-            static void StartPostfix(SackKnightController __instance)
-            {
-                __instance.aiActor.MovementSpeed *= 5;
             }
 
             [HarmonyPatch(typeof(SackKnightAttackBehavior), "CurrentFormCooldown", MethodType.Getter)]
