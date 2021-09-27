@@ -8,6 +8,7 @@ using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using UnityEngine;
+using Random = System.Random;
 
 namespace EnterTheGungeonMod
 {
@@ -21,6 +22,7 @@ namespace EnterTheGungeonMod
 
         static ManualLogSource logger;
         static Utilities util;
+        private static Random rnd = new Random();
 
         static bool infiniteKeys = false;
         static bool currencyIncreaseOnly = false;
@@ -71,23 +73,39 @@ namespace EnterTheGungeonMod
         {
             PlayerController player = GameManager.Instance.PrimaryPlayer;
             PickupObject junk = PickupObjectDatabase.GetById(GlobalItemIds.Junk);
-            junk.Pickup(player);
+            LootEngine.SpawnItem(junk.gameObject, player.CenterPosition, Vector2.up, 1f);
             PickupObject junkan = PickupObjectDatabase.GetById(GlobalItemIds.SackKnightBoon);
-            junkan.Pickup(player);
+            LootEngine.SpawnItem(junkan.gameObject, player.CenterPosition, Vector2.up, 1f);
         }
 
-        private static Dictionary<string, bool> firstRun = new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase)
+        private static T[] FisherYates<T>(T[] array)
         {
-            { "InfiniteKeys", true },
-            { "Currency", true },
-            { "ControllerFakeSemiAutoCooldown", true },
-            { "Start", true },
-            { "DetermineCurrentMagnificence", true },
-            { "GetTargetQualityFromChances", true },
-            { "SpawnCurrency", true },
-            { "Gun.Update", true },
-            { "Projectile.Update", true }
-        };
+            T[] copy = new T[array.Length];
+            array.CopyTo(copy, 0);
+            int n = copy.Length;
+            for (int i = n - 1; i >= 1; i--)
+            {
+                int j = rnd.Next(i + 1);
+                T temp = copy[i];
+                copy[i] = copy[j];
+                copy[j] = temp;
+            }
+            return copy;
+        }
+
+        private static Dictionary<string, bool> firstRun =
+            new Dictionary<string, bool>(StringComparer.InvariantCultureIgnoreCase)
+            {
+                {"InfiniteKeys", true},
+                {"Currency", true},
+                {"ControllerFakeSemiAutoCooldown", true},
+                {"Start", true},
+                {"DetermineCurrentMagnificence", true},
+                {"GetTargetQualityFromChances", true},
+                {"SpawnCurrency", true},
+                {"Gun.Update", true},
+                {"Projectile.Update", true}
+            };
 
 
         public class MinorPatches
@@ -113,6 +131,7 @@ namespace EnterTheGungeonMod
                             util.ToggleAutoBlank();
                             logger.LogInfo($"Toggled auto blank to {util.autoBlank}");
                         }
+
                         if (Input.GetKeyDown(KeyCode.G))
                         {
                             SilencerInstance.DestroyBulletsInRange(GameManager.Instance.PrimaryPlayer.CenterPosition, 10000, true, true);
@@ -124,6 +143,18 @@ namespace EnterTheGungeonMod
                         if (Input.GetKeyDown(KeyCode.U))
                         {
                             SpawnItems();
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.O))
+                        {
+                            BraveTime.RegisterTimeScaleMultiplier(0.5f, __instance.gameObject);
+                            logger.LogInfo($"Applied time multiplier");
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.P))
+                        {
+                            BraveTime.ClearMultiplier(__instance.gameObject);
+                            logger.LogInfo($"Cleared time multiplier");
                         }
                     }
                 }
@@ -309,14 +340,14 @@ namespace EnterTheGungeonMod
 
                 if (__instance.Owner is PlayerController)
                 {
-                    //__instance.ResetDistance();
-                    //BounceProjModifier bounceMod = __instance.gameObject.GetOrAddComponent<BounceProjModifier>();
-                    //if (bounceMod != null)
-                    //{
-                    //    bounceMod.numberOfBounces = 1;
-                    //}
+                    __instance.ResetDistance();
+                    BounceProjModifier bounceMod = __instance.gameObject.GetOrAddComponent<BounceProjModifier>();
+                    if (bounceMod != null)
+                    {
+                        bounceMod.numberOfBounces = 1;
+                    }
 
-                    //HomingModifier homingMod = __instance.gameObject.GetOrAddComponent<HomingModifier>();
+                    //HomingModifier homingMod = __instance.placeholderGameObject.GetOrAddComponent<HomingModifier>();
                     //if (homingMod != null)
                     //{
                     //    homingMod.AngularVelocity = 90;
@@ -426,19 +457,19 @@ namespace EnterTheGungeonMod
 
             public float ShowTextTime(string text)
             {
-                return 1 + text.Length / TEXT_REVEAL_SPEED;
+                return text.Length / TEXT_REVEAL_SPEED;
             }
 
             private IEnumerator ShowTextBoxes(AIActor actor, Vector3 offset)
             {
                 foreach (string text in texts)
                 {
-                    float time = ShowTextTime(text);
-                    TextBoxManager.ShowTextBox(actor.transform.position + offset, actor.transform, time, text, "", false, TextBoxManager.BoxSlideOrientation.NO_ADJUSTMENT, false, false);
+                    float time = 0.5f + ShowTextTime(text);
+                    TextBoxManager.ShowTextBox(actor.transform.position + offset, actor.transform, time, text, GameManager.Instance.PrimaryPlayer.characterAudioSpeechTag, false, TextBoxManager.BoxSlideOrientation.NO_ADJUSTMENT, false, false);
                     yield return new WaitForSeconds(time);
                     TextBoxManager.ClearTextBox(actor.transform);
                 }
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
                 yield break;
             }
 
@@ -461,9 +492,8 @@ namespace EnterTheGungeonMod
 
         public class CompanionPatches
         {
-            static System.Random random = new System.Random();
-            static float junkanSpeechTimer;
-
+            private static float junkanSpeechTimer;
+            private static Stack<string> junkanSpeechShuffled = new Stack<string>();
 
             [HarmonyPatch(typeof(SackKnightController), MethodType.Constructor)]
             [HarmonyPostfix]
@@ -491,16 +521,19 @@ namespace EnterTheGungeonMod
             [HarmonyPostfix]
             static void Postfix(AIActor ___m_aiActor)
             {
-                int speechRoll = random.Next(100);
+                if (junkanSpeechShuffled.Count == 0)
+                {
+                    junkanSpeechShuffled = new Stack<string>(FisherYates(junkanCombatSpeech));
+                }
+                int speechRoll = rnd.Next(100);
                 if (junkanSpeechTimer <= 0 && speechRoll <= configJunkanSpeakChance.Value)
                 {
                     Vector3 offset = new Vector3(0.75f, 1f, 0f);
                     GameObject gameObj = new GameObject("PlayerController");
                     TextBoxSeries quip = gameObj.AddComponent<TextBoxSeries>();
-                    int chosenSpeech = random.Next(junkanCombatSpeech.Length);
-                    quip.Init(junkanCombatSpeech[chosenSpeech]);
+                    quip.Init(junkanSpeechShuffled.Pop());
                     junkanSpeechTimer = quip.TotalSpeakLength();
-                    logger.LogInfo($"JUNKAN: {junkanSpeechTimer}, {chosenSpeech}, {speechRoll}");
+                    logger.LogInfo($"JUNKAN: {junkanSpeechTimer}, {speechRoll}");
                     quip.Speak(___m_aiActor, offset);
                 }
             }
