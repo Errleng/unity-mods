@@ -74,11 +74,21 @@ namespace LibraryOfRuina
         //}
 
         [HarmonyPatch(typeof(UIPassiveSuccessionBookSlot), "SetEquipedOtherBook")]
-        public class Patch_BookModel_CanSuccessionPassive
+        public class Patch_BookModel_SetEquipedOtherBook
         {
             static bool Prefix(UIPassiveSuccessionBookSlot __instance)
             {
                 logger.LogInfo($"Equipped other book: {__instance.CurrentBookModel.Name}");
+                return false;
+            }
+        }
+
+        [HarmonyPatch(typeof(UIPassiveSuccessionBookSlot), "SetDisabledByTheBluePrimary")]
+        public class Patch_BookModel_SetDisabledByTheBluePrimary
+        {
+            static bool Prefix(UIPassiveSuccessionBookSlot __instance)
+            {
+                logger.LogInfo($"Disabled by Blue Reverbation: {__instance.CurrentBookModel.Name}");
                 return false;
             }
         }
