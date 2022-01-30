@@ -12,8 +12,9 @@ namespace LibraryOfRuina
     {
         static ManualLogSource logger;
 
-        static readonly float cardDiceMinMultiplier = 1.5f;
-        static readonly float cardDiceMaxMultiplier = 1f;
+        static readonly float CARD_DICE_MIN_MULT = 1.5f;
+        static readonly float CARD_DICE_MAX_MULT = 1f;
+        static readonly float CARD_DICE_CHANGE_PROB = 0.8f;
 
         private void Awake()
         {
@@ -22,43 +23,82 @@ namespace LibraryOfRuina
             logger = Logger;
             var harmony = new Harmony(PluginInfo.PLUGIN_GUID);
             harmony.PatchAll();
+            foreach (var method in harmony.GetPatchedMethods())
+            {
+                Logger.LogInfo($"Patched method {method.DeclaringType.Name}.{method.Name}");
+            }
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is done patching!");
         }
 
-        [HarmonyPatch(typeof(BattleDiceBehavior), "GetDiceMin")]
-        public class Patch_BattleDiceBehavior_GetDiceMin
+        [HarmonyPatch(typeof(BattleDiceBehavior), "RollDice")]
+        public class Patch_BattleDiceBehavior_RollDice
         {
-            static void Postfix(BattleDiceBehavior __instance, ref int __result)
+            static bool Prefix(BattleDiceBehavior __instance, ref int ____diceResultValue)
             {
                 if (__instance.owner.faction == Faction.Player)
                 {
-                    int improvedResult = (int)Math.Ceiling(__result * cardDiceMinMultiplier);
-                    improvedResult = Math.Min(improvedResult, __instance.GetDiceMax());
-                    logger.LogInfo($"GetDiceMin patch {__instance.card.card.GetName()}: ({__result} => {improvedResult}) / {__instance.GetDiceMax()}");
-                    __result = improvedResult;
-                }
-            }
-        }
+                    var originalRollChance = RandomUtil.valueForProb;
+                    if (originalRollChance > CARD_DICE_CHANGE_PROB)
+                    {
+                        logger.LogDebug($"Using original at {(int)(originalRollChance * 100)}% < {(int)((1 - CARD_DICE_CHANGE_PROB) * 100)}% chance");
+                        return true;
+                    }
+                    int diceMin = (int)Math.Ceiling(__instance.GetDiceMin() * CARD_DICE_MIN_MULT);
+                    //int diceMax = (int)Math.Ceiling(__instance.GetDiceMax() * CARD_DICE_MAX_MULT);
+                    int diceMax = __instance.GetDiceMax();
+                    diceMin = Math.Min(diceMin, diceMax);
 
-        [HarmonyPatch(typeof(BattleDiceBehavior), "GetDiceMax")]
-        public class Patch_BattleDiceBehavior_GetDiceMax
-        {
-            static void Postfix(BattleDiceBehavior __instance, ref int __result)
-            {
-                if (__instance.owner.faction == Faction.Player)
-                {
-                    int improvedResult = (int)Math.Ceiling(__result * cardDiceMaxMultiplier);
-                    __result = improvedResult;
-                }
-            }
-        }
+                    logger.LogDebug($"{__instance.card.card.GetName()} dice min: ({__instance.GetDiceMin()} => {diceMin}) / ({__instance.GetDiceMax()} => {diceMax})");
 
-        [HarmonyPatch(typeof(DropBookInventoryModel), "RemoveBook")]
-        public class Patch_DropBookInventoryModel_RemoveBook
-        {
-            static bool Prefix()
-            {
-                return false;
+                    int trueMin = Mathf.Min(diceMin, diceMax);
+                    ____diceResultValue = DiceStatCalculator.MakeDiceResult(diceMin, diceMax, 0);
+                    __instance.owner.passiveDetail.ChangeDiceResult(__instance, ref ____diceResultValue);
+                    __instance.owner.emotionDetail.ChangeDiceResult(__instance, ref ____diceResultValue);
+                    __instance.owner.bufListDetail.ChangeDiceResult(__instance, ref ____diceResultValue);
+                    if (____diceResultValue < trueMin)
+                    {
+                        ____diceResultValue = trueMin;
+                    }
+                    int numPosCoins = 0;
+                    int numNegCoins = 0;
+                    if (trueMin != diceMax)
+                    {
+                        if (____diceResultValue >= diceMax)
+                        {
+                            numPosCoins++;
+                        }
+                        else if (____diceResultValue <= trueMin)
+                        {
+                            numNegCoins++;
+                        }
+                    }
+                    if (____diceResultValue < 1)
+                    {
+                        ____diceResultValue = 1;
+                    }
+                    BattleCardTotalResult battleCardResultLog = __instance.owner.battleCardResultLog;
+                    if (numPosCoins > 0)
+                    {
+                        int posEmotion = __instance.owner.emotionDetail.CreateEmotionCoin(EmotionCoinType.Positive, numPosCoins);
+                        if (battleCardResultLog != null)
+                        {
+                            battleCardResultLog.AddEmotionCoin(EmotionCoinType.Positive, posEmotion);
+                        }
+                    }
+                    else if (numNegCoins > 0)
+                    {
+                        int negEmotion = __instance.owner.emotionDetail.CreateEmotionCoin(EmotionCoinType.Negative, numNegCoins);
+                        if (battleCardResultLog != null)
+                        {
+                            battleCardResultLog.AddEmotionCoin(EmotionCoinType.Negative, negEmotion);
+                        }
+                    }
+                    __instance.card.OnRollDice(__instance);
+                    __instance.OnEventDiceAbility(DiceCardAbilityBase.DiceCardPassiveType.RollDice, null);
+                    __instance.isUsed = true;
+                    return false;
+                }
+                return true;
             }
         }
 
@@ -69,7 +109,7 @@ namespace LibraryOfRuina
         //    {
         //        BookPassiveInfo bookPassiveInfo = new BookPassiveInfo();
         //        bookPassiveInfo.passive = Singleton<PassiveXmlList>.Instance.GetData(targetpassive.originpassive.id);
-        //        logger.LogInfo($"Can attribute {bookPassiveInfo.name}: {__result} because {haspassiveState}");
+        //        logger.LogDebug($"Can attribute {bookPassiveInfo.name}: {__result} because {haspassiveState}");
         //    }
         //}
 
@@ -78,7 +118,7 @@ namespace LibraryOfRuina
         {
             static bool Prefix(UIPassiveSuccessionBookSlot __instance)
             {
-                logger.LogInfo($"Equipped other book: {__instance.CurrentBookModel.Name}");
+                logger.LogDebug($"Equipped other book: {__instance.CurrentBookModel.Name}");
                 return false;
             }
         }
@@ -88,7 +128,7 @@ namespace LibraryOfRuina
         {
             static bool Prefix(UIPassiveSuccessionBookSlot __instance)
             {
-                logger.LogInfo($"Disabled by Blue Reverbation: {__instance.CurrentBookModel.Name}");
+                logger.LogDebug($"Disabled by Blue Reverbation: {__instance.CurrentBookModel.Name}");
                 return false;
             }
         }
