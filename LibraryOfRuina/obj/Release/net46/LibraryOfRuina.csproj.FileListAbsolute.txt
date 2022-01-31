@@ -10,7 +10,6 @@ C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\bin\Release\ne
 C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\bin\Release\net46\Unity.Postprocessing.Runtime.dll
 C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\bin\Release\net46\Ookii.Dialogs.dll
 C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\bin\Release\net46\Unity.Mathematics.dll
-C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\obj\Release\net46\LibraryOfRuina.csproj.AssemblyReference.cache
 C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\obj\Release\net46\PluginInfo.cs
 C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\obj\Release\net46\LibraryOfRuina.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\obj\Release\net46\LibraryOfRuina.AssemblyInfoInputs.cache
@@ -19,3 +18,4 @@ C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\obj\Release\ne
 C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\obj\Release\net46\LibraryOfRuina.csproj.CopyComplete
 C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\obj\Release\net46\LibraryOfRuina.dll
 C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\obj\Release\net46\LibraryOfRuina.pdb
+C:\Users\mtrxtrns\Documents\Code\GitHub\unity-mods\LibraryOfRuina\obj\Release\net46\LibraryOfRuina.csproj.AssemblyReference.cache

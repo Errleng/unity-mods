@@ -1,7 +1,10 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using LOR_DiceSystem;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using UI;
 using UnityEngine;
 
@@ -14,7 +17,9 @@ namespace LibraryOfRuina
 
         static readonly float CARD_DICE_MIN_MULT = 1.5f;
         static readonly float CARD_DICE_MAX_MULT = 1f;
-        static readonly float CARD_DICE_CHANGE_PROB = 0.8f;
+        static readonly float CARD_DICE_CHANGE_PROB = 0.9f;
+        static readonly float SPEED_DICE_MIN_MULT = 1.5f;
+        static readonly float SPEED_DICE_CHANGE_PROB = 0.9f;
 
         private void Awake()
         {
@@ -30,6 +35,29 @@ namespace LibraryOfRuina
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is done patching!");
         }
 
+        [HarmonyPatch(typeof(SpeedDiceRule), "Roll")]
+        public class Patch_SpeedDiceRule_Roll
+        {
+            static void Postfix(BattleUnitModel unitModel, ref List<SpeedDice> __result)
+            {
+                if (unitModel.faction == Faction.Player)
+                {
+                    var originalRollChance = RandomUtil.valueForProb;
+                    if (originalRollChance > SPEED_DICE_CHANGE_PROB)
+                    {
+                        logger.LogDebug($"Using original speed dice roll at {Math.Round(1 - originalRollChance, 2) * 100} < {Math.Round(1 - SPEED_DICE_CHANGE_PROB, 2) * 100} chance");
+                        return;
+                    }
+                    foreach (var speedDice in __result)
+                    {
+                        int newMin = Math.Min((int)Math.Ceiling(speedDice.min * SPEED_DICE_MIN_MULT), speedDice.faces);
+                        speedDice.value = UnityEngine.Random.Range(newMin, speedDice.faces + 1);
+                        logger.LogDebug($"{unitModel.UnitData.unitData.name} speed dice min: ({speedDice.min} => {newMin}) / ({speedDice.faces})");
+                    }
+                }
+            }
+        }
+
         [HarmonyPatch(typeof(BattleDiceBehavior), "RollDice")]
         public class Patch_BattleDiceBehavior_RollDice
         {
@@ -40,7 +68,7 @@ namespace LibraryOfRuina
                     var originalRollChance = RandomUtil.valueForProb;
                     if (originalRollChance > CARD_DICE_CHANGE_PROB)
                     {
-                        logger.LogDebug($"Using original at {(int)(originalRollChance * 100)}% < {(int)((1 - CARD_DICE_CHANGE_PROB) * 100)}% chance");
+                        logger.LogDebug($"Using original dice roll at {Math.Round(1 - CARD_DICE_CHANGE_PROB, 2) * 100} < {Math.Round(1 - CARD_DICE_CHANGE_PROB, 2) * 100} chance");
                         return true;
                     }
                     int diceMin = (int)Math.Ceiling(__instance.GetDiceMin() * CARD_DICE_MIN_MULT);
@@ -118,7 +146,7 @@ namespace LibraryOfRuina
         {
             static bool Prefix(UIPassiveSuccessionBookSlot __instance)
             {
-                logger.LogDebug($"Equipped other book: {__instance.CurrentBookModel.Name}");
+                //logger.LogDebug($"Equipped other book: {__instance.CurrentBookModel.Name}");
                 return false;
             }
         }
@@ -128,8 +156,22 @@ namespace LibraryOfRuina
         {
             static bool Prefix(UIPassiveSuccessionBookSlot __instance)
             {
-                logger.LogDebug($"Disabled by Blue Reverbation: {__instance.CurrentBookModel.Name}");
+                //logger.LogDebug($"Disabled by Blue Reverbation: {__instance.CurrentBookModel.Name}");
                 return false;
+            }
+        }
+
+        [HarmonyPatch(typeof(BookModel), "GetEquipedBookList")]
+        public class Patch_BookModel_GetEquipedBookList
+        {
+            static void Postfix(ref List<BookModel> __result)
+            {
+                var caller = new StackFrame(2).GetMethod().Name;
+                if (caller == "ApplyFilter")
+                {
+                    logger.LogDebug($"GetEquipedBookList() was called by {caller}. Returning an empty list.");
+                    __result.Clear();
+                }
             }
         }
     }
