@@ -68,7 +68,7 @@ namespace LibraryOfRuina
                     var originalRollChance = RandomUtil.valueForProb;
                     if (originalRollChance > CARD_DICE_CHANGE_PROB)
                     {
-                        logger.LogDebug($"Using original dice roll at {Math.Round(1 - CARD_DICE_CHANGE_PROB, 2) * 100} < {Math.Round(1 - CARD_DICE_CHANGE_PROB, 2) * 100} chance");
+                        //logger.LogDebug($"Using original dice roll at {Math.Round(1 - CARD_DICE_CHANGE_PROB, 2) * 100} < {Math.Round(1 - CARD_DICE_CHANGE_PROB, 2) * 100} chance");
                         return true;
                     }
                     int diceMin = (int)Math.Ceiling(__instance.GetDiceMin() * CARD_DICE_MIN_MULT);
@@ -161,18 +161,53 @@ namespace LibraryOfRuina
             }
         }
 
-        [HarmonyPatch(typeof(BookModel), "GetEquipedBookList")]
-        public class Patch_BookModel_GetEquipedBookList
+        //[HarmonyPatch(typeof(BookModel), "IsEquipedPassiveBook")]
+        //public class Patch_BookModel_IsEquipedPassiveBook
+        //{
+        //    static void Postfix(ref bool __result)
+        //    {
+        //        __result = false;
+        //    }
+        //}
+
+        [HarmonyPatch(typeof(BookInventoryModel), "GetBookList_PassiveEquip")]
+        public class Patch_BookInventoryModel_GetBookList_PassiveEquip
         {
-            static void Postfix(ref List<BookModel> __result)
+            static void Postfix(BookModel booktobeEquiped, List<BookModel> ____bookList, ref List<BookModel> __result)
             {
-                var caller = new StackFrame(2).GetMethod().Name;
-                if (caller == "ApplyFilter")
+                List<BookModel> result = new List<BookModel>();
+                List<BookModel> inventory = new List<BookModel>();
+                inventory.AddRange(____bookList);
+                if (inventory.Contains(booktobeEquiped))
                 {
-                    logger.LogDebug($"GetEquipedBookList() was called by {caller}. Returning an empty list.");
-                    __result.Clear();
+                    inventory.Remove(booktobeEquiped);
                 }
+                foreach (BookModel bookModel in inventory)
+                {
+                    if (/*bookModel.owner == null && !bookModel.IsEquipedPassiveBook() && */bookModel.GetPassiveInfoList(true).Count != 0)
+                    {
+                        result.Add(bookModel);
+                    }
+                }
+                __result = result;
             }
         }
+
+        //[HarmonyPatch(typeof(UIPassiveSuccessionBookListPanel), "ApplyFilter")]
+        //public class Patch_UIPassiveSuccessionBookListPanel_ApplyFilter
+        //{
+        //    static void Postfix(List<BookModel> ____currentBookList, List<BookModel> ____originBookList)
+        //    {
+        //        logger.LogDebug($"UIPassiveSuccessionBookListPanel.ApplyFilter");
+        //        foreach (var book in ____currentBookList)
+        //        {
+        //            logger.LogDebug($"Current Key page: {book.Name}");
+        //        }
+        //        foreach (var book in ____originBookList)
+        //        {
+        //            logger.LogDebug($"Origin Key page: {book.Name}");
+        //        }
+        //    }
+        //}
     }
 }
