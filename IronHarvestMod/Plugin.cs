@@ -39,8 +39,10 @@ namespace IronHarvestMod
                 static void Postfix(Battle __instance)
                 {
                     ++tickCount;
-                    if (tickCount % TICKS_PER_SECOND == 0)
+                    if (tickCount % TICKS_PER_SECOND * 10 == 0)
                     {
+                        logger.LogDebug($"ComputeTick(): 10 second interval");
+
                         var sceneTraverse = Traverse.Create(__instance.Scene);
                         var updateableEntitiesProperty = sceneTraverse.Property("UpdateableEntities");
                         var updateableEntities = updateableEntitiesProperty.GetValue() as IEnumerable;
@@ -51,7 +53,7 @@ namespace IronHarvestMod
                                 var unit = updateableEntity as Unit;
                                 if (unit.Faction == unit.Battle.LocalPlayerFactionId)
                                 {
-                                    float healAmount = unit.MaxHealth * 0.01f;
+                                    float healAmount = unit.MaxHealth * 0.05f;
                                     unit.DamageModel.Heal(healAmount, unit.EntityId);
                                 }
                             }
@@ -121,7 +123,7 @@ namespace IronHarvestMod
                             var remainingBuildTime = remainingBuildTimeField.GetValue<int>();
                             if (remainingBuildTime > 0)
                             {
-                                remainingBuildTimeField.SetValue(remainingBuildTime / 2);
+                                remainingBuildTimeField.SetValue(remainingBuildTime - 2);
                             }
                         }
                     }
