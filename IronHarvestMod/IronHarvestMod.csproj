@@ -27,5 +27,11 @@
     <Reference Include="KingArt.IronHarvest">
       <HintPath>..\..\..\..\..\my-files\my-games\Iron Harvest\release\IronHarvest_Data\Managed\KingArt.IronHarvest.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\my-files\my-games\Iron Harvest\release\IronHarvest_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Vectrics">
+      <HintPath>..\..\..\..\..\my-files\my-games\Iron Harvest\release\IronHarvest_Data\Managed\Vectrics.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

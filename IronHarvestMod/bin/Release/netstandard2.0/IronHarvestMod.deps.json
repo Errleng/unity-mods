@@ -15,7 +15,8 @@
           "NETStandard.Library": "2.0.3",
           "UnityEngine.Modules": "2019.4.27",
           "Basis": "1.0.0.0",
-          "KingArt.IronHarvest": "0.0.0.0"
+          "KingArt.IronHarvest": "0.0.0.0",
+          "Vectrics": "1.0.0.0"
         },
         "runtime": {
           "IronHarvestMod.dll": {}
@@ -403,6 +404,14 @@
           }
         }
       },
+      "Vectrics/1.0.0.0": {
+        "runtime": {
+          "Vectrics.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "GameCoreUtil/1.0.0.0": {
         "runtime": {
           "GameCoreUtil.dll": {
@@ -414,14 +423,6 @@
       "GameCoreLib/1.0.0.0": {
         "runtime": {
           "GameCoreLib.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "Vectrics/1.0.0.0": {
-        "runtime": {
-          "Vectrics.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1206,17 +1207,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Vectrics/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "GameCoreUtil/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
     "GameCoreLib/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Vectrics/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

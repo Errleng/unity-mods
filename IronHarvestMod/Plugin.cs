@@ -1,12 +1,15 @@
 ﻿using Basis.Presentation.Messages;
 using Basis.Simulation;
+using Basis.Simulation.BattlePlans;
 using Basis.Simulation.Entities;
+using Basis.Simulation.Entities.Configs;
 using Basis.Simulation.Entities.Units;
 using Basis.Simulation.Production;
 using Basis.Tools.ReadonlyCollections;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using System;
 using System.Collections;
 
 namespace IronHarvestMod
@@ -39,23 +42,62 @@ namespace IronHarvestMod
                 static void Postfix(Battle __instance)
                 {
                     ++tickCount;
-                    if (tickCount % TICKS_PER_SECOND * 10 == 0)
+                    if (tickCount % (TICKS_PER_SECOND * 10) == 0)
                     {
                         logger.LogDebug($"ComputeTick(): 10 second interval");
 
-                        var sceneTraverse = Traverse.Create(__instance.Scene);
-                        var updateableEntitiesProperty = sceneTraverse.Property("UpdateableEntities");
-                        var updateableEntities = updateableEntitiesProperty.GetValue() as IEnumerable;
-                        foreach (var updateableEntity in updateableEntities)
+                        //var sceneTraverse = Traverse.Create(__instance.Scene);
+                        //var updateableEntitiesProperty = sceneTraverse.Property("UpdateableEntities");
+                        //var updateableEntities = updateableEntitiesProperty.GetValue() as IEnumerable;
+
+                        //foreach (var updateableEntity in updateableEntities)
+                        //{
+                        //    if (updateableEntity.GetType().IsSubclassOf(typeof(Unit)) || updateableEntity.GetType() == typeof(Unit))
+                        //    {
+                        //        var unit = updateableEntity as Unit;
+                        //        if (unit.Faction == unit.Battle.LocalPlayerFactionId)
+                        //        {
+                        //            float healAmount = unit.MaxHealth * 0.05f;
+                        //            unit.DamageModel.Heal(healAmount, unit.EntityId);
+                        //        }
+                        //    }
+                        //}
+
+                        foreach (var unit in __instance.Scene.Units)
                         {
-                            if (updateableEntity.GetType().IsSubclassOf(typeof(Unit)))
+                            if (unit.Faction == __instance.LocalPlayerFactionId)
                             {
-                                var unit = updateableEntity as Unit;
-                                if (unit.Faction == unit.Battle.LocalPlayerFactionId)
+                                float healAmount = unit.MaxHealth * 0.05f;
+                                unit.DamageModel.Heal(healAmount, unit.EntityId);
+                            }
+                        }
+                    }
+
+                    if (tickCount % (TICKS_PER_SECOND * 60) == 0)
+                    {
+                        foreach (var squad in __instance.Scene.Squads)
+                        {
+                            if (squad.Faction == __instance.LocalPlayerFactionId)
+                            {
+                                logger.LogDebug($"Friendly squad: {squad}");
+                                bool isDamaged = false;
+                                foreach (var member in squad.Members)
                                 {
-                                    float healAmount = unit.MaxHealth * 0.05f;
-                                    unit.DamageModel.Heal(healAmount, unit.EntityId);
+                                    if (member.IsAlive && member.DamageModel.IsDamaged)
+                                    {
+                                        isDamaged = true;
+                                        break;
+                                    }
                                 }
+                                if (isDamaged)
+                                {
+                                    continue;
+                                }
+                                var healthBoxConfig = new HealthBoxConfig("");
+                                var healthBox = new HealthBox(__instance, healthBoxConfig, 0, new Vectrics.Vector2D(0, 0), 0);
+                                var healthBoxTraverse = Traverse.Create(healthBox);
+                                healthBoxTraverse.Method("Pickup").GetValue(squad);
+                                logger.LogDebug($"Reinforced squad: {squad}");
                             }
                         }
                     }
@@ -105,6 +147,19 @@ namespace IronHarvestMod
                     }
                 }
             }
+
+            [HarmonyPatch(typeof(ResourceSystem), "CanPayResources", new Type[] { typeof(byte), typeof(ResourceCost) })]
+            class Patch_GetResourceLimit
+            {
+                static bool Prefix(ResourceSystem __instance, byte faction, ref ResourceCost buildCost)
+                {
+                    if (faction == __instance.Battle.LocalPlayerFactionId)
+                    {
+                        Traverse.Create(buildCost).Property("PopulationCost").SetValue(0);
+                    }
+                    return true;
+                }
+            }
         }
 
         class Patches_ProductionStructure
@@ -123,7 +178,7 @@ namespace IronHarvestMod
                             var remainingBuildTime = remainingBuildTimeField.GetValue<int>();
                             if (remainingBuildTime > 0)
                             {
-                                remainingBuildTimeField.SetValue(remainingBuildTime - 2);
+                                remainingBuildTimeField.SetValue(remainingBuildTime - 1);
                             }
                         }
                     }
