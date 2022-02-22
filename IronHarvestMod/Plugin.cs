@@ -71,33 +71,41 @@ namespace IronHarvestMod
                                 unit.DamageModel.Heal(healAmount, unit.EntityId);
                             }
                         }
+
+                        foreach (var structure in __instance.Scene.Structures)
+                        {
+                            if (structure.Faction == __instance.LocalPlayerFactionId)
+                            {
+                                float healAmount = structure.MaxHealth * 0.05f;
+                                structure.DamageModel.Heal(healAmount, structure.EntityId);
+                            }
+                        }
                     }
 
                     if (tickCount % (TICKS_PER_SECOND * 60) == 0)
                     {
-                        foreach (var squad in __instance.Scene.Squads)
+                        foreach (var unit in __instance.Scene.Units)
                         {
-                            if (squad.Faction == __instance.LocalPlayerFactionId)
+                            if (unit.Faction == __instance.LocalPlayerFactionId)
                             {
-                                logger.LogDebug($"Friendly squad: {squad}");
-                                bool isDamaged = false;
-                                foreach (var member in squad.Members)
+                                try
                                 {
-                                    if (member.IsAlive && member.DamageModel.IsDamaged)
+                                    logger.LogDebug($"Friendly squad: {unit.EntityId} {unit.SquadId} {unit.Squad}");
+                                    if (unit.Squad == null)
                                     {
-                                        isDamaged = true;
-                                        break;
+                                        continue;
                                     }
+                                    unit.Squad.VeterancySystem.AddExperience(unit.Squad.VeterancySystem.GetNeededExperienceForLevelUp(), RankChangedReason.Experience);
+                                    var healthBoxConfig = new HealthBoxConfig("");
+                                    var healthBox = new HealthBox(__instance, healthBoxConfig, 0, new Vectrics.Vector2D(0, 0), 0);
+                                    var healthBoxTraverse = Traverse.Create(healthBox);
+                                    healthBoxTraverse.Method("Pickup").GetValue(unit.Squad);
+                                    logger.LogDebug($"Reinforced squad: {unit.Squad}");
                                 }
-                                if (isDamaged)
+                                catch (Exception e)
                                 {
-                                    continue;
+                                    logger.LogWarning($"ComputeTick(): 60 second interval encountered an error: {e.Message}");
                                 }
-                                var healthBoxConfig = new HealthBoxConfig("");
-                                var healthBox = new HealthBox(__instance, healthBoxConfig, 0, new Vectrics.Vector2D(0, 0), 0);
-                                var healthBoxTraverse = Traverse.Create(healthBox);
-                                healthBoxTraverse.Method("Pickup").GetValue(squad);
-                                logger.LogDebug($"Reinforced squad: {squad}");
                             }
                         }
                     }
@@ -142,8 +150,8 @@ namespace IronHarvestMod
                         (type == ResourceType.Iron || type == ResourceType.Oil) &&
                         changeReason == ResourceChangeReason.Production)
                     {
-                        logger.LogDebug($"Patch_GrantResource for faction {faction} for resource {type}: {amount}");
-                        amount *= 2;
+                        //logger.LogDebug($"Patch_GrantResource for faction {faction} for resource {type}: {amount}");
+                        amount *= 4;
                     }
                 }
             }
@@ -178,7 +186,7 @@ namespace IronHarvestMod
                             var remainingBuildTime = remainingBuildTimeField.GetValue<int>();
                             if (remainingBuildTime > 0)
                             {
-                                remainingBuildTimeField.SetValue(remainingBuildTime - 1);
+                                remainingBuildTimeField.SetValue(1);
                             }
                         }
                     }

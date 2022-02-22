@@ -34,4 +34,8 @@
       <HintPath>..\..\..\..\..\my-files\my-games\Iron Harvest\release\IronHarvest_Data\Managed\Vectrics.dll</HintPath>
     </Reference>
   </ItemGroup>
+  
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(TargetPath)&quot; &quot;C:\Users\mtrxtrns\my-files\my-games\Iron Harvest\release\BepInEx\plugins&quot;" />
+  </Target>
 </Project>
