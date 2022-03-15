@@ -1,19 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "yEWYwGaZ4PVvatYYxv4/mjGnhXSFDI0bz/1v3gte7wwHPjthmvBs5Zwuj2nhseRbX9nIzU1DdKgjWjo/e7pR7Q==",
+  "dgSpecHash": "8esRpBaJ3+qC98z0cogzrGyNSHpDoL4Z/9hKkAHs2ern1fcCIqaPkwC43DO4Rb9fdY4mTWvKUs/39jTmob8FIQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\mtrxtrns\\Documents\\Code\\GitHub\\unity-mods\\LibraryOfRuina\\LibraryOfRuina.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mtrxtrns\\.nuget\\packages\\bepinex.analyzers\\1.0.8\\bepinex.analyzers.1.0.8.nupkg.sha512",
-    "C:\\Users\\mtrxtrns\\.nuget\\packages\\bepinex.baselib\\5.4.17\\bepinex.baselib.5.4.17.nupkg.sha512",
-    "C:\\Users\\mtrxtrns\\.nuget\\packages\\bepinex.core\\5.4.17\\bepinex.core.5.4.17.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\bepinex.baselib\\5.4.19\\bepinex.baselib.5.4.19.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\bepinex.core\\5.4.19\\bepinex.core.5.4.19.nupkg.sha512",
     "C:\\Users\\mtrxtrns\\.nuget\\packages\\bepinex.plugininfoprops\\1.1.0\\bepinex.plugininfoprops.1.1.0.nupkg.sha512",
-    "C:\\Users\\mtrxtrns\\.nuget\\packages\\harmonyx\\2.5.5\\harmonyx.2.5.5.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\harmonyx\\2.7.0\\harmonyx.2.7.0.nupkg.sha512",
     "C:\\Users\\mtrxtrns\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
     "C:\\Users\\mtrxtrns\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net46\\1.0.2\\microsoft.netframework.referenceassemblies.net46.1.0.2.nupkg.sha512",
     "C:\\Users\\mtrxtrns\\.nuget\\packages\\mono.cecil\\0.11.4\\mono.cecil.0.11.4.nupkg.sha512",
-    "C:\\Users\\mtrxtrns\\.nuget\\packages\\monomod.runtimedetour\\21.8.19.1\\monomod.runtimedetour.21.8.19.1.nupkg.sha512",
-    "C:\\Users\\mtrxtrns\\.nuget\\packages\\monomod.utils\\21.8.19.1\\monomod.utils.21.8.19.1.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\monomod.runtimedetour\\21.12.13.1\\monomod.runtimedetour.21.12.13.1.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\monomod.utils\\21.12.13.1\\monomod.utils.21.12.13.1.nupkg.sha512",
     "C:\\Users\\mtrxtrns\\.nuget\\packages\\unityengine.modules\\2019.4.0\\unityengine.modules.2019.4.0.nupkg.sha512"
   ],
   "logs": [

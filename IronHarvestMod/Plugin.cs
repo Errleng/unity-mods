@@ -5,6 +5,7 @@ using Basis.Simulation.Entities;
 using Basis.Simulation.Entities.Configs;
 using Basis.Simulation.Entities.Units;
 using Basis.Simulation.Production;
+using Basis.Simulation.Veterancy;
 using Basis.Tools.ReadonlyCollections;
 using BepInEx;
 using BepInEx.Logging;
@@ -90,16 +91,31 @@ namespace IronHarvestMod
                             {
                                 try
                                 {
-                                    logger.LogDebug($"Friendly squad: {unit.EntityId} {unit.SquadId} {unit.Squad}");
+                                    logger.LogDebug($"Friendly unit: {unit} {unit.EntityId}, squad id: {unit.SquadId}, squad {unit.Squad}");
+                                    if (unit is IExperienceReceiver unitReceiver)
+                                    {
+                                        var oldExp = unitReceiver.VeterancySystem.CurrentXP;
+                                        unitReceiver.VeterancySystem.AddExperience(10000, RankChangedReason.Experience);
+                                    }
                                     if (unit.Squad == null)
                                     {
                                         continue;
                                     }
-                                    unit.Squad.VeterancySystem.AddExperience(unit.Squad.VeterancySystem.GetNeededExperienceForLevelUp(), RankChangedReason.Experience);
+                                    if (unit.Squad is IExperienceReceiver squadReceiver)
+                                    {
+                                        var oldExp = squadReceiver.VeterancySystem.CurrentXP;
+                                        squadReceiver.VeterancySystem.AddExperience(10000, RankChangedReason.Experience);
+                                    }
+                                    if (unit.Squad.Health == unit.Squad.MaxHealth)
+                                    {
+                                        continue;
+                                    }
                                     var healthBoxConfig = new HealthBoxConfig("");
-                                    var healthBox = new HealthBox(__instance, healthBoxConfig, 0, new Vectrics.Vector2D(0, 0), 0);
+                                    healthBoxConfig.HealingAmount = 1000;
+                                    var healthBox = new HealthBox(__instance, healthBoxConfig, 0, unit.Squad.Position, 0);
                                     var healthBoxTraverse = Traverse.Create(healthBox);
-                                    healthBoxTraverse.Method("Pickup").GetValue(unit.Squad);
+                                    var args = new object[] { unit.Squad };
+                                    healthBoxTraverse.Method("Pickup", args).GetValue(args);
                                     logger.LogDebug($"Reinforced squad: {unit.Squad}");
                                 }
                                 catch (Exception e)
@@ -151,7 +167,7 @@ namespace IronHarvestMod
                         changeReason == ResourceChangeReason.Production)
                     {
                         //logger.LogDebug($"Patch_GrantResource for faction {faction} for resource {type}: {amount}");
-                        amount *= 4;
+                        amount *= 2;
                     }
                 }
             }
