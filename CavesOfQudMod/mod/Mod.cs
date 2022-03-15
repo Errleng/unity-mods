@@ -14,6 +14,7 @@ using GameObject = XRL.World.GameObject;
 namespace CavesOfQudMod
 {
     internal class Mod
+    {
         static void Log(string message)
         {
             Debug.Log($"CavesOfQudMod: {message}");
