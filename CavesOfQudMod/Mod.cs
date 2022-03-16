@@ -1,11 +1,6 @@
 ﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using XRL.World;
+using XRL.World.Effects;
 using XRL.World.Parts;
 using XRL.World.Parts.Mutation;
 using XRL.World.Parts.Skill;
@@ -15,42 +10,40 @@ namespace CavesOfQudMod
 {
     internal class Mod
     {
-        static void Log(string message)
+        public static void Log(string message)
         {
             Debug.Log($"CavesOfQudMod: {message}");
         }
 
+        [HarmonyPatch(typeof(Beguiling))]
         class Patches_Beguiling
         {
-            [HarmonyPatch(typeof(Beguiling), "GetMaxTargets")]
-            class Patch_GetMaxTargets
+            [HarmonyPostfix]
+            [HarmonyPatch("GetMaxTargets")]
+            static void Postfix_GetMaxTargets(GameObject Beguiler, ref int __result)
             {
-                static void Postfix(Beguiling __instance, ref int __result)
+                if (!Beguiler.IsPlayer())
                 {
-                    if (!__instance.ParentObject.IsPlayer())
-                    {
-                        return;
-                    }
-                    Log($"Beguiling.GetMaxTargets. Original result: {__result}");
-                    __result *= 2;
+                    return;
                 }
+                Log($"Beguiling.GetMaxTargets. Original result: {__result}");
+                __result += 2;
             }
         }
 
+        [HarmonyPatch(typeof(Persuasion_Proselytize))]
         class Patches_Persuasion_Proselytize
         {
-            [HarmonyPatch(typeof(Persuasion_Proselytize), "GetMaxTargets")]
-            class Patch_GetMaxTargets
+            [HarmonyPostfix]
+            [HarmonyPatch("GetMaxTargets")]
+            static void Postfix(GameObject Proselytizer, ref int __result)
             {
-                static void Postfix(Persuasion_Proselytize __instance, ref int __result)
+                if (!Proselytizer.IsPlayer())
                 {
-                    if (!__instance.ParentObject.IsPlayer())
-                    {
-                        return;
-                    }
-                    Log($"Persuasion_Proselytize.GetMaxTargets. Original result: {__result}");
-                    __result *= 2;
+                    return;
                 }
+                Log($"Persuasion_Proselytize.GetMaxTargets. Original result: {__result}");
+                __result += 2;
             }
         }
 
@@ -61,14 +54,17 @@ namespace CavesOfQudMod
             [HarmonyPatch("IsSuitableTarget")]
             static void Postfix_IsSuitableTarget(Brain __instance, GameObject who, ref bool __result)
             {
-                if (!__instance.IsPlayerLed())
+                if (__result || !__instance.IsPlayerLed() || who.HasEffect<Asleep>() || !who.IsHostileTowards(__instance.PartyLeader) || !__instance.CheckPerceptionOf(who))
                 {
                     return;
                 }
-                Log($"Brain.IsSuitableTarget. Original result: {__result}. Target: {who.BaseDisplayNameStripped}.");
-                if (!__result)
+
+                var parent = __instance.ParentObject;
+                Log($"Brain.IsSuitableTarget. Original result: {__result}. Targeter: {parent.BaseDisplayNameStripped}. Target: {who.BaseDisplayNameStripped}. Distance: {parent.DistanceTo(who)}. Hostile walk radius to target: {parent.GetHostileWalkRadius(who)}, to this: {who.GetHostileWalkRadius(parent)}, party leader to target: {__instance.PartyLeader.GetHostileWalkRadius(who)}");
+
+                if (__instance.PartyLeader.DistanceTo(who) <= 5)
                 {
-                    Log($"Brain.IsSuitableTarget. Rejected target {who.BaseDisplayNameStripped} which is at distance {who.DistanceTo(who.Target)} and hostile walk radius {who.GetHostileWalkRadius(who.Target)} from its target {who.Target.BaseDisplayNameStripped}");
+                    __result = true;
                 }
             }
         }
