@@ -27,7 +27,7 @@ namespace CavesOfQudMod
                     return;
                 }
                 Log($"Beguiling.GetMaxTargets. Original result: {__result}");
-                __result += 2;
+                __result *= 2;
             }
         }
 
@@ -43,7 +43,7 @@ namespace CavesOfQudMod
                     return;
                 }
                 Log($"Persuasion_Proselytize.GetMaxTargets. Original result: {__result}");
-                __result += 2;
+                __result *= 2;
             }
         }
 

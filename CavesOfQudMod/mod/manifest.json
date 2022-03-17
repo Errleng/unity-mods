@@ -1,0 +1,10 @@
+{
+    "id": "CavesOfQudMod",
+    "loadorder": 100,
+    "title": "Caves of Qud Mod",
+    "description": "Adds summoning and improves companions",
+    "tags": "Companions",
+    "version": "1.0",
+    "author": "Daze",
+    "previewImage": "preview.jpg"
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skills>
+    <skill Name="Summoning" Class="Summoning" Description="You are a master summoner." Cost="100" Attribute="Ego" Snippet="summoning">
+        <power Name="Lesser Summon" Cost="10" Attribute="Ego" Minimum="10" Class="Summoning_LesserSummon" Snippet="lesser summoning" Description="You summon weak creatures to aid you."></power>
+        <power Name="Greater Summon" Cost="10" Attribute="Ego" Minimum="20" Class="Summoning_GreaterSummon" Snippet="greater summoning" Description="You summon creatures to aid you."></power>
+        <power Name="Army of Qud" Cost="10" Attribute="Ego" Minimum="30" Class="Summoning_ArmyOfQud" Snippet="mass summoning" Description="You summon several creatures at once to aid you."></power>
+    </skill>
+</skills>
