@@ -12,7 +12,7 @@ namespace XRL.World.Parts.Skill
     [Serializable]
     internal class SummonedEffect : Effect
     {
-        GameObject master;
+        public GameObject master;
 
         public SummonedEffect()
         {
@@ -69,6 +69,22 @@ namespace XRL.World.Parts.Skill
             }
 
             return base.Apply(Object);
+        }
+
+        public override bool WantEvent(int ID, int cascade)
+        {
+            return base.WantEvent(ID, cascade) || ID == EndTurnEvent.ID;
+        }
+
+        public override bool HandleEvent(EndTurnEvent E)
+        {
+            Mod.Log($"Summoned creature: {Object.DisplayName}");
+            if (Object.HasPart(typeof(LeaveTrailWhileHasEffect)))
+            {
+                Mod.Log($"Killing follower with trail effect");
+                Object.Die();
+            }
+            return base.HandleEvent(E);
         }
     }
 }

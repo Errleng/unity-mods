@@ -23,6 +23,8 @@ namespace XRL.World.Parts.Skill
 
         public override string description => $"{base.description}\nYou mass-conjure several friendly creatures that follow you. They will be at or below your character level.";
 
+        public override string sound => "rotmg";
+
         public override int GetTargetLevel()
         {
             int level = Stat.Random(ParentObject.Level / 2, ParentObject.Level);
@@ -36,21 +38,26 @@ namespace XRL.World.Parts.Skill
                 var cell = ParentObject.pPhysics.PickDestinationCell(8, AllowVis.OnlyVisible, false, false, false, true, UI.PickTarget.PickStyle.EmptyCell, null, false);
                 if (cell == null)
                 {
-                    return false;
+                    continue;
                 }
                 if (!cell.IsEmpty() || cell.HasObjectWithTag("ExcavatoryTerrainFeature"))
                 {
-                    return false;
+                    continue;
                 }
 
                 var creature = EncountersAPI.GetNonLegendaryCreatureAroundLevel(GetTargetLevel());
                 creature.pBrain.Hostile = false;
-                creature.ApplyEffect(new SummonedEffect(ParentObject));
+                if (!creature.ApplyEffect(new SummonedEffect(ParentObject)))
+                {
+                    continue;
+                }
                 cell.AddObject(creature);
             }
 
             ParentObject.UseEnergy(turnCost, $"Skill {name}");
             CooldownMyActivatedAbility(activatedAbilityId, cooldown + 1);
+            PlayWorldSound(sound, 0.5f, 0f, true, null);
+
             return true;
         }
     }

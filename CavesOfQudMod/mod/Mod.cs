@@ -16,11 +16,11 @@ namespace CavesOfQudMod
         }
 
         [HarmonyPatch(typeof(Beguiling))]
-        class Patches_Beguiling
+        private class Patches_Beguiling
         {
             [HarmonyPostfix]
             [HarmonyPatch("GetMaxTargets")]
-            static void Postfix_GetMaxTargets(GameObject Beguiler, ref int __result)
+            private static void Postfix_GetMaxTargets(GameObject Beguiler, ref int __result)
             {
                 if (!Beguiler.IsPlayer())
                 {
@@ -32,11 +32,11 @@ namespace CavesOfQudMod
         }
 
         [HarmonyPatch(typeof(Persuasion_Proselytize))]
-        class Patches_Persuasion_Proselytize
+        private class Patches_Persuasion_Proselytize
         {
             [HarmonyPostfix]
             [HarmonyPatch("GetMaxTargets")]
-            static void Postfix(GameObject Proselytizer, ref int __result)
+            private static void Postfix(GameObject Proselytizer, ref int __result)
             {
                 if (!Proselytizer.IsPlayer())
                 {
@@ -48,11 +48,11 @@ namespace CavesOfQudMod
         }
 
         [HarmonyPatch(typeof(Brain))]
-        class Patches_Brain
+        private class Patches_Brain
         {
             [HarmonyPostfix]
             [HarmonyPatch("IsSuitableTarget")]
-            static void Postfix_IsSuitableTarget(Brain __instance, GameObject who, ref bool __result)
+            private static void Postfix_IsSuitableTarget(Brain __instance, GameObject who, ref bool __result)
             {
                 if (__result || !__instance.IsPlayerLed() || who.HasEffect<Asleep>() || !who.IsHostileTowards(__instance.PartyLeader) || !__instance.CheckPerceptionOf(who))
                 {

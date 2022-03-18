@@ -11,7 +11,7 @@ namespace CavesOfQudMod
     [Serializable]
     internal class PlayerPart : IPart
     {
-        readonly List<GameObject> followersInZone;
+        private readonly List<GameObject> followersInZone;
 
         public PlayerPart()
         {
@@ -39,8 +39,7 @@ namespace CavesOfQudMod
                     followersInZone.Add(gameObject);
                 }
             }
-            Mod.Log($"There are {followersInZone.Count} followers in the same zone as the player");
-
+            //Mod.Log($"There are {followersInZone.Count} followers in the same zone as the player");
             return base.HandleEvent(E);
         }
 
@@ -50,9 +49,12 @@ namespace CavesOfQudMod
 
             foreach (var follower in followersInZone)
             {
-                var cell = follower.CurrentCell;
+                var cell = follower?.CurrentCell;
                 // same radius as a torch
-                cell?.ParentZone?.AddLight(cell.X, cell.Y, 5, LightLevel.Omniscient);
+                cell?.ParentZone?.AddLight(cell.X, cell.Y, 1, LightLevel.Omniscient);
+                cell?.ParentZone?.AddLight(cell.X, cell.Y, 5);
+
+                follower?.pRender?.SetForegroundColor("C");
             }
 
             return base.HandleEvent(evt);

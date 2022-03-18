@@ -9,7 +9,7 @@ namespace XRL.World.Parts.Skill
     [Serializable]
     internal class Summoning_LesserSummon : Summoning_GenericSummon
     {
-        readonly int levelDecrease = 10;
+        public readonly int levelDecrease = 10;
 
         public override int cooldown => 200;
 

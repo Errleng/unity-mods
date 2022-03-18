@@ -1,15 +1,13 @@
 ﻿using CavesOfQudMod;
 using Qud.API;
 using System;
-using XRL.World;
-using XRL.World.Parts.Skill;
 
 namespace XRL.World.Parts.Skill
 {
     [Serializable]
     internal abstract class Summoning_GenericSummon : BaseSkill
     {
-        protected Guid activatedAbilityId = Guid.Empty;
+        public Guid activatedAbilityId;
 
         public abstract int cooldown { get; }
         public abstract int turnCost { get; }
@@ -17,6 +15,7 @@ namespace XRL.World.Parts.Skill
         public abstract string command { get; }
         public abstract string icon { get; }
         public virtual string description => $"Cooldown: {cooldown}.";
+        public virtual string sound => "summon";
 
         public abstract int GetTargetLevel();
 
@@ -88,12 +87,25 @@ namespace XRL.World.Parts.Skill
 
             var creature = EncountersAPI.GetNonLegendaryCreatureAroundLevel(GetTargetLevel());
             creature.pBrain.Hostile = false;
-            creature.ApplyEffect(new SummonedEffect(ParentObject));
+            if (!creature.ApplyEffect(new SummonedEffect(ParentObject)))
+            {
+                return false;
+            }
             cell.AddObject(creature);
 
-            CooldownMyActivatedAbility(activatedAbilityId, cooldown + 1);
+            CooldownMyActivatedAbility(activatedAbilityId, cooldown);
             ParentObject.UseEnergy(turnCost, $"Skill {name}");
-            Mod.Log($"Activated ability: {activatedAbilityId}");
+            PlayWorldSound(sound, 0.5f, 0f, true, null);
+
+            Mod.Log($"Activated ability {name} ({activatedAbilityId})");
+            //if (activatedAbilityId == Guid.Empty)
+            //{
+            //    var ability = ActivatedAbilities.ThePlayer.ActivatedAbilities.GetAbilityByCommand(command);
+            //    Mod.Log($"Re-adding ability {ability.DisplayName} ({ability.ID})");
+            //    ActivatedAbilities.ThePlayer.RemoveActivatedAbility(ref ability.ID);
+            //    AddSkill(ParentObject);
+            //}
+
             return true;
         }
     }
