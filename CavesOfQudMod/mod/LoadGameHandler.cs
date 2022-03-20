@@ -19,11 +19,11 @@ namespace CavesOfQudMod
             if (player != null)
             {
                 player.RequirePart<PlayerPart>();
-                Mod.Log($"Added part to player: {player.GetPart<PlayerPart>()}");
+                Mod.Debug($"Added part to player: {player.GetPart<PlayerPart>()}");
             }
             else
             {
-                Mod.Log("Player is null when loading game!");
+                Mod.Debug("Player is null when loading game!");
             }
         }
     }

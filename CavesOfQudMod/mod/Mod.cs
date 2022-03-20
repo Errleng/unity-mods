@@ -1,4 +1,7 @@
 ﻿using HarmonyLib;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using XRL.World.Effects;
 using XRL.World.Parts;
@@ -12,7 +15,13 @@ namespace CavesOfQudMod
     {
         public static void Log(string message)
         {
-            Debug.Log($"CavesOfQudMod: {message}");
+            UnityEngine.Debug.Log($"CavesOfQudMod - {message}");
+        }
+
+        public static void Debug(string message, [CallerMemberName] string callerMethod = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerFileLineNum = 0)
+        {
+            var callerFileName = Path.GetFileName(callerFilePath);
+            UnityEngine.Debug.Log($"CavesOfQudMod.{callerFileName}.{callerMethod}:{callerFileLineNum} - {message}");
         }
 
         [HarmonyPatch(typeof(Beguiling))]
@@ -60,9 +69,7 @@ namespace CavesOfQudMod
                 }
 
                 var parent = __instance.ParentObject;
-                Log($"Brain.IsSuitableTarget. Original result: {__result}. Targeter: {parent.BaseDisplayNameStripped}. Target: {who.BaseDisplayNameStripped}. Distance: {parent.DistanceTo(who)}. Hostile walk radius to target: {parent.GetHostileWalkRadius(who)}, to this: {who.GetHostileWalkRadius(parent)}, party leader to target: {__instance.PartyLeader.GetHostileWalkRadius(who)}");
-
-                if (__instance.PartyLeader.DistanceTo(who) <= 5)
+                if (__instance.PartyLeader.DistanceTo(who) <= 10)
                 {
                     __result = true;
                 }

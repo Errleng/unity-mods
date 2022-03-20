@@ -1,6 +1,7 @@
 ﻿using CavesOfQudMod;
 using Qud.API;
 using System;
+using System.Linq;
 
 namespace XRL.World.Parts.Skill
 {
@@ -14,6 +15,8 @@ namespace XRL.World.Parts.Skill
         public abstract string name { get; }
         public abstract string command { get; }
         public abstract string icon { get; }
+
+        public virtual int numSummons => 1;
         public virtual string description => $"Cooldown: {cooldown}.";
         public virtual string sound => "summon";
 
@@ -73,38 +76,54 @@ namespace XRL.World.Parts.Skill
             return base.RemoveSkill(GO);
         }
 
+        public virtual void AfterSummon(GameObject summoned) { }
+
         public virtual bool Summon()
         {
-            var cell = PickDirection();
-            if (cell == null)
+            // add extra to be safe
+            int area = numSummons + 2;
+            // PI*r^2 = a => r = sqrt(a/PI)
+            int radius = (int)Math.Ceiling(Math.Sqrt(area / Math.PI));
+            var cells = ParentObject.pPhysics.CurrentCell.GetEmptyConnectedAdjacentCells(radius);
+            int successfulSpawns = 0;
+            foreach (var cell in cells)
             {
-                return false;
-            }
-            if (!cell.IsEmpty() || cell.HasObjectWithTag("ExcavatoryTerrainFeature"))
-            {
-                return false;
-            }
+                if (successfulSpawns == numSummons)
+                {
+                    break;
+                }
+                if (cell == null)
+                {
+                    Mod.Debug($"Could not find a valid cell");
+                    continue;
+                }
+                if (!cell.IsEmpty())
+                {
+                    Mod.Debug($"Cell {cell.DebugName} already contains objects: {string.Join(",", cell.Objects.Select(x => x.DebugName))}");
+                    continue;
+                }
+                if (cell.HasObjectWithTag("ExcavatoryTerrainFeature"))
+                {
+                    Mod.Debug($"Cell {cell.DebugName} is excavatory terrain");
+                    continue;
+                }
 
-            var creature = EncountersAPI.GetNonLegendaryCreatureAroundLevel(GetTargetLevel());
-            creature.pBrain.Hostile = false;
-            if (!creature.ApplyEffect(new SummonedEffect(ParentObject)))
-            {
-                return false;
+                var creature = EncountersAPI.GetNonLegendaryCreatureAroundLevel(GetTargetLevel());
+                creature.pBrain.Hostile = false;
+                if (!creature.ApplyEffect(new SummonedEffect(ParentObject)))
+                {
+                    Mod.Debug($"Could not apply SummonedEffect to {creature.DebugName}");
+                    continue;
+                }
+                AfterSummon(creature);
+                cell.AddObject(creature);
+                successfulSpawns++;
             }
-            cell.AddObject(creature);
+            Mod.Debug($"Summoned {successfulSpawns}/{numSummons} creatures in {cells.Count} cells");
 
             CooldownMyActivatedAbility(activatedAbilityId, cooldown);
             ParentObject.UseEnergy(turnCost, $"Skill {name}");
             PlayWorldSound(sound, 0.5f, 0f, true, null);
-
-            Mod.Log($"Activated ability {name} ({activatedAbilityId})");
-            //if (activatedAbilityId == Guid.Empty)
-            //{
-            //    var ability = ActivatedAbilities.ThePlayer.ActivatedAbilities.GetAbilityByCommand(command);
-            //    Mod.Log($"Re-adding ability {ability.DisplayName} ({ability.ID})");
-            //    ActivatedAbilities.ThePlayer.RemoveActivatedAbility(ref ability.ID);
-            //    AddSkill(ParentObject);
-            //}
 
             return true;
         }

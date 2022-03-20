@@ -59,10 +59,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Summoning.cs" />
     <Compile Include="Summoning_ArmyOfQud.cs" />
+    <Compile Include="Summoning_DimensionalStorage.cs" />
     <Compile Include="Summoning_GenericSummon.cs" />
     <Compile Include="SummonedEffect.cs" />
     <Compile Include="Summoning_GreaterSummon.cs" />
     <Compile Include="Summoning_LesserSummon.cs" />
+    <Compile Include="Summoning_TheWorldOpposes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -57,6 +57,7 @@ namespace XRL.World.Parts.Skill
             Object.RemovePart<GivesRep>();
             Object.pBrain.AdjustFeeling(master, 100);
             Object.pBrain.BecomeCompanionOf(master);
+            Object.Property.Add("NoFollowerDeathPopup", "true");
 
             var party = master.pBrain.PartyMembers;
             if (!party.ContainsKey(Object.id))
@@ -65,7 +66,7 @@ namespace XRL.World.Parts.Skill
             }
             else
             {
-                Mod.Log($"Party already contains summoned thing with ID: {Object.id}");
+                Mod.Debug($"Party already contains summoned thing with ID: {Object.id}");
             }
 
             return base.Apply(Object);
@@ -73,16 +74,26 @@ namespace XRL.World.Parts.Skill
 
         public override bool WantEvent(int ID, int cascade)
         {
-            return base.WantEvent(ID, cascade) || ID == EndTurnEvent.ID;
+            return base.WantEvent(ID, cascade) || ID == EndTurnEvent.ID || ID == ZoneActivatedEvent.ID;
         }
 
         public override bool HandleEvent(EndTurnEvent E)
         {
-            Mod.Log($"Summoned creature: {Object.DisplayName}");
             if (Object.HasPart(typeof(LeaveTrailWhileHasEffect)))
             {
-                Mod.Log($"Killing follower with trail effect");
+                Mod.Debug($"Killing follower {Object.DebugName} that has a trail effect");
                 Object.Die();
+            }
+            return base.HandleEvent(E);
+        }
+
+        public override bool HandleEvent(ZoneActivatedEvent E)
+        {
+            if (Object.HasPart(typeof(ElementalJelly)))
+            {
+                Mod.Debug($"Neutralized {Object.DebugName} behaviour");
+                Object.UnregisterPartEvent(Object.GetPart<ElementalJelly>(), "EnteredCell");
+                return false;
             }
             return base.HandleEvent(E);
         }
