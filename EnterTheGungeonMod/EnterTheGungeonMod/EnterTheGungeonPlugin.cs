@@ -38,6 +38,8 @@ namespace EnterTheGungeonMod
         private static ConfigEntry<float> configReloadTimeMult;
         private static ConfigEntry<float> configSpreadMult;
         private static ConfigEntry<float> configRateOfFireMult;
+        private static ConfigEntry<bool> configGodModeEnabled;
+        private static ConfigEntry<bool> configInfiniteAmmoEnabled;
         private static ConfigEntry<int> configJunkanSpeakChance;
 
         private void Awake()
@@ -49,7 +51,6 @@ namespace EnterTheGungeonMod
 
             config = Config;
             initConfig();
-
             Harmony.CreateAndPatchAll(typeof(MinorPatches));
             Harmony.CreateAndPatchAll(typeof(PlayerProjectilePatches));
             Harmony.CreateAndPatchAll(typeof(CompanionPatches));
@@ -60,6 +61,8 @@ namespace EnterTheGungeonMod
             configReloadTimeMult = config.Bind(minorPatchHeading, "reloadTimeMult", 1f, "Player reload cooldown multiplier");
             configSpreadMult = config.Bind(minorPatchHeading, "spreadMult", 1f, "Player shooting spread multiplier");
             configRateOfFireMult = config.Bind(minorPatchHeading, "rateOfFireMult", 1f, "Player rate of fire multiplier");
+            configGodModeEnabled = config.Bind(minorPatchHeading, "godModeEnabled", false, "Enable god mode");
+            configInfiniteAmmoEnabled = config.Bind(minorPatchHeading, "infiniteAmmoEnabled", false, "Enable infinite ammo");
             configJunkanSpeakChance = config.Bind(majorPatchHeading, "junkanSpeakChance", 100, "Ser Junkan combat speak chance");
         }
 
@@ -110,7 +113,6 @@ namespace EnterTheGungeonMod
 
         public class MinorPatches
         {
-
             [HarmonyPatch(typeof(PlayerController), "HandlePlayerInput")]
             [HarmonyPostfix]
             static void Postfix(PlayerController __instance)
@@ -155,6 +157,18 @@ namespace EnterTheGungeonMod
                         {
                             BraveTime.ClearMultiplier(__instance.gameObject);
                             logger.LogInfo($"Cleared time multiplier");
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.K))
+                        {
+                            configGodModeEnabled.Value = !configGodModeEnabled.Value;
+                            logger.LogInfo($"Toggled godmode to {configGodModeEnabled.Value}");
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.J))
+                        {
+                            configInfiniteAmmoEnabled.Value = !configInfiniteAmmoEnabled.Value;
+                            logger.LogInfo($"Toggled infinite ammo to {configInfiniteAmmoEnabled.Value}");
                         }
                     }
                 }
@@ -318,6 +332,26 @@ namespace EnterTheGungeonMod
                 }
             }
 
+            [HarmonyPatch(typeof(Gun), "Attack")]
+            [HarmonyPostfix]
+            static void Gun_Attack_Postfix(Gun __instance)
+            {
+                if (configInfiniteAmmoEnabled.Value)
+                {
+                    __instance.CurrentAmmo = __instance.AdjustedMaxAmmo;
+                }
+            }
+
+            [HarmonyPatch(typeof(HealthHaver), "ApplyDamageDirectional")]
+            [HarmonyPrefix]
+            static bool Prefix(HealthHaver __instance, bool ___isPlayerCharacter)
+            {
+                if (___isPlayerCharacter)
+                {
+                    return !configGodModeEnabled.Value;
+                }
+                return true;
+            }
         }
 
         public class PlayerProjectilePatches
@@ -401,7 +435,6 @@ namespace EnterTheGungeonMod
                 }
             }
         }
-
 
         public class TextBoxSeries : MonoBehaviour
         {
@@ -488,7 +521,6 @@ namespace EnterTheGungeonMod
                 StartCoroutine(ShowTextBoxes(actor, offset));
             }
         }
-
 
         public class CompanionPatches
         {
