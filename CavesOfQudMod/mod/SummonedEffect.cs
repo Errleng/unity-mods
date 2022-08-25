@@ -57,7 +57,7 @@ namespace XRL.World.Parts.Skill
             Object.RemovePart<GivesRep>();
             Object.pBrain.AdjustFeeling(master, 100);
             Object.pBrain.BecomeCompanionOf(master);
-            Object.Property.Add("NoFollowerDeathPopup", "true");
+            Object.IsTrifling = true;
 
             var party = master.pBrain.PartyMembers;
             if (!party.ContainsKey(Object.id))
