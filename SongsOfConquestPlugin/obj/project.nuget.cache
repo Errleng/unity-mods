@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "dgSpecHash": "FHCwL4cMfQZgpUCYzhGhlaCo0/dHnW4P5C735RzCg7+RGdrGYJTMsR9w/Z+IaymQea4caqjF0SZT9/LaX4xL0g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mtrxtrns\\Documents\\Code\\GitHub\\unity-mods\\SongsOfConquestPlugin\\SongsOfConquestPlugin.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\bepinex.analyzers\\1.0.8\\bepinex.analyzers.1.0.8.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\bepinex.baselib\\5.4.20\\bepinex.baselib.5.4.20.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\bepinex.core\\5.4.21\\bepinex.core.5.4.21.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\bepinex.plugininfoprops\\1.1.0\\bepinex.plugininfoprops.1.1.0.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\harmonyx\\2.7.0\\harmonyx.2.7.0.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net46\\1.0.2\\microsoft.netframework.referenceassemblies.net46.1.0.2.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\mono.cecil\\0.11.4\\mono.cecil.0.11.4.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\monomod.runtimedetour\\21.12.13.1\\monomod.runtimedetour.21.12.13.1.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\monomod.utils\\21.12.13.1\\monomod.utils.21.12.13.1.nupkg.sha512",
+    "C:\\Users\\mtrxtrns\\.nuget\\packages\\unityengine.modules\\2020.3.25\\unityengine.modules.2020.3.25.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "SongsOfConquestPlugin depends on UnityEngine.Modules (>= 2020.3.24.7980941) but UnityEngine.Modules 2020.3.24.7980941 was not found. An approximate best match of UnityEngine.Modules 2020.3.25 was resolved.",
+      "libraryId": "UnityEngine.Modules",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.6"
+      ]
+    }
+  ]
+}
