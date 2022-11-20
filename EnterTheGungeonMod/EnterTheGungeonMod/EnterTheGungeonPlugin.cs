@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
@@ -31,8 +32,8 @@ namespace EnterTheGungeonMod
         static float currencyDropMult = 1.5f;
         static float creditDropMult = 2f;
         static int maxMagnificence = 0;
-        static float initialCoolness = 10;
-        static float chestChanceMult = 1f;
+        static float initialCoolness = 0;
+        static float chestChanceMult = 1.25f;
 
         private static ConfigFile config;
         private static ConfigEntry<float> configReloadTimeMult;
@@ -75,10 +76,35 @@ namespace EnterTheGungeonMod
         private static void SpawnItems()
         {
             PlayerController player = GameManager.Instance.PrimaryPlayer;
-            PickupObject junk = PickupObjectDatabase.GetById(GlobalItemIds.Junk);
-            LootEngine.SpawnItem(junk.gameObject, player.CenterPosition, Vector2.up, 1f);
-            PickupObject junkan = PickupObjectDatabase.GetById(GlobalItemIds.SackKnightBoon);
-            LootEngine.SpawnItem(junkan.gameObject, player.CenterPosition, Vector2.up, 1f);
+            //PickupObject junk = PickupObjectDatabase.GetById(GlobalItemIds.Junk);
+            //LootEngine.SpawnItem(junk.gameObject, player.CenterPosition, Vector2.up, 1f);
+            //PickupObject junkan = PickupObjectDatabase.GetById(GlobalItemIds.SackKnightBoon);
+            //LootEngine.SpawnItem(junkan.gameObject, player.CenterPosition, Vector2.up, 1f);
+            List<PassiveItem> list = new List<PassiveItem>();
+            for (int i = 0; i < PickupObjectDatabase.Instance.Objects.Count; i++)
+            {
+                if (PickupObjectDatabase.Instance.Objects[i] != null && PickupObjectDatabase.Instance.Objects[i] is PassiveItem)
+                {
+                    if (PickupObjectDatabase.Instance.Objects[i].quality != PickupObject.ItemQuality.EXCLUDED && PickupObjectDatabase.Instance.Objects[i].quality != PickupObject.ItemQuality.SPECIAL)
+                    {
+                        if (!(PickupObjectDatabase.Instance.Objects[i] is ContentTeaserItem))
+                        {
+                            EncounterTrackable component = PickupObjectDatabase.Instance.Objects[i].GetComponent<EncounterTrackable>();
+                            if (component && component.PrerequisitesMet())
+                            {
+                                var passive = PickupObjectDatabase.Instance.Objects[i] as PassiveItem;
+                                list.Add(passive);
+                                if (!player.HasPassiveItem(passive.PickupObjectId))
+                                {
+                                    EncounterTrackable.SuppressNextNotification = true;
+                                    LootEngine.GivePrefabToPlayer(passive.gameObject, player);
+                                    EncounterTrackable.SuppressNextNotification = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private static T[] FisherYates<T>(T[] array)
@@ -131,7 +157,7 @@ namespace EnterTheGungeonMod
                         if (Input.GetKeyDown(KeyCode.Z))
                         {
                             util.ToggleAutoBlank();
-                            logger.LogInfo($"Toggled auto blank to {util.autoBlank}");
+                            //logger.LogInfo($"Toggled auto blank to {util.autoBlank}");
                         }
 
                         if (Input.GetKeyDown(KeyCode.G))
@@ -365,6 +391,7 @@ namespace EnterTheGungeonMod
             [HarmonyPostfix]
             static void Postfix(Projectile __instance)
             {
+                return;
                 if (firstRun["Projectile.Update"])
                 {
                     logger.LogInfo("Loaded ETGPlugin Projectile Update()");
