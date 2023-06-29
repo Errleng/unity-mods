@@ -4,19 +4,19 @@ using XRL.Rules;
 namespace XRL.World.Parts.Skill
 {
     [Serializable]
-    internal class Summoning_TheWorldOpposes : Summoning_GenericSummon
+    internal class Summoning_TheWorld : Summoning_GenericSummon
     {
         private readonly int SUMMON_DURATION = 100;
 
-        public override int cooldown => 3000;
+        public override int cooldown => 1000;
 
         public override int turnCost => 1000;
 
         public override int numSummons => 30;
 
-        public override string name => "The World Opposes";
+        public override string name => "The World";
 
-        public override string command => "CommandTheWorldOpposes";
+        public override string command => "CommandTheWorld";
 
         public override string icon => "W";
 

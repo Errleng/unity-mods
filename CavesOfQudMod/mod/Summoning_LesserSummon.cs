@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace XRL.World.Parts.Skill
 {
@@ -11,7 +7,7 @@ namespace XRL.World.Parts.Skill
     {
         public readonly int levelDecrease = 10;
 
-        public override int cooldown => 200;
+        public override int cooldown => 100;
 
         public override int turnCost => 1000;
 

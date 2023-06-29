@@ -6,7 +6,7 @@ namespace XRL.World.Parts.Skill
     [Serializable]
     internal class Summoning_ArmyOfQud : Summoning_GenericSummon
     {
-        public override int cooldown => 1000;
+        public override int cooldown => 600;
 
         public override int turnCost => 1000;
 

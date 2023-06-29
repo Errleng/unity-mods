@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 namespace XRL.World.Parts.Skill
 {
@@ -153,6 +150,12 @@ namespace XRL.World.Parts.Skill
             Mod.Debug($"Released {successfulSpawns}/{numSummons} creatures in {cells.Count} cells");
             CooldownMyActivatedAbility(activatedAbilityId, cooldown);
             ParentObject.UseEnergy(turnCost, $"Skill {name}");
+            return true;
+        }
+
+        public override bool FinalRender(RenderEvent E, bool bAlt)
+        {
+            E.ColorString = "&M";
             return true;
         }
     }

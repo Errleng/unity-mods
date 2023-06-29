@@ -31,11 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Lib.Harmony.2.2.1\lib\net472\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\..\games\Caves of Qud\CoQ_Data\Managed\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>D:\my-files\my-games\Caves of Qud\CoQ_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\games\Caves of Qud\CoQ_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,10 +46,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>D:\my-files\my-games\Caves of Qud\CoQ_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\..\games\Caves of Qud\CoQ_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>D:\my-files\my-games\Caves of Qud\CoQ_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\games\Caves of Qud\CoQ_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -62,9 +62,10 @@
     <Compile Include="Summoning_DimensionalStorage.cs" />
     <Compile Include="Summoning_GenericSummon.cs" />
     <Compile Include="SummonedEffect.cs" />
+    <Compile Include="Summoning_MythicalSummon.cs" />
     <Compile Include="Summoning_GreaterSummon.cs" />
     <Compile Include="Summoning_LesserSummon.cs" />
-    <Compile Include="Summoning_TheWorldOpposes.cs" />
+    <Compile Include="Summoning_TheWorld.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -72,9 +73,12 @@
   <ItemGroup>
     <Folder Include="mod\" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(SolutionDir)/*.cs" "$(SolutionDir)/mod"
-(robocopy /mir "$(SolutionDir)/mod" "C:\Users\mtrxtrns\AppData\LocalLow\Freehold Games\CavesOfQud\Mods\CavesOfQudMod")  ^&amp; exit 0</PostBuildEvent>
+(robocopy /mir "$(SolutionDir)/mod" "%25userprofile%25\AppData\LocalLow\Freehold Games\CavesOfQud\Mods\CavesOfQudMod")  ^&amp; exit 0</PostBuildEvent>
   </PropertyGroup>
 </Project>

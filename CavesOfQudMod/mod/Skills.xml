@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skills>
     <skill Name="Summoning" Class="Summoning" Description="You are a master summoner." Cost="10" Attribute="Ego" Snippet="summoning">
-        <power Name="Dimensional Storage" Cost="10" Attribute="Ego" Minimum="20" Class="Summoning_DimensionalStorage" Snippet="dimensional storing" Description="You store summoned creatures in another dimension."></power>
-        <power Name="Lesser Summon" Cost="10" Attribute="Ego" Minimum="10" Class="Summoning_LesserSummon" Snippet="lesser summoning" Description="You summon weak creatures to aid you."></power>
-        <power Name="Greater Summon" Cost="10" Attribute="Ego" Minimum="15" Class="Summoning_GreaterSummon" Snippet="greater summoning" Description="You summon creatures to aid you."></power>
-        <power Name="Army of Qud" Cost="10" Attribute="Ego" Minimum="20" Class="Summoning_ArmyOfQud" Snippet="mass summoning" Description="You summon several creatures at once to aid you."></power>
-        <power Name="The World Opposes" Cost="10" Attribute="Ego" Minimum="30" Class="Summoning_TheWorldOpposes" Snippet="greater mass summoning" Description="You summon a great host of temporary creatures at once to aid you."></power>
+        <power Name="Dimensional Storage" Cost="50" Attribute="Ego" Minimum="10" Class="Summoning_DimensionalStorage" Snippet="dimensional storing" Description="You store summoned creatures in another dimension."></power>
+        <power Name="Lesser Summon" Cost="100" Attribute="Ego" Minimum="10" Class="Summoning_LesserSummon" Snippet="lesser summoning" Description="You summon weak creatures to aid you."></power>
+        <power Name="Greater Summon" Cost="200" Attribute="Ego" Minimum="10" Class="Summoning_GreaterSummon" Snippet="greater summoning" Description="You summon creatures to aid you."></power>
+        <power Name="Mythical Summon" Cost="300" Attribute="Ego" Minimum="15" Class="Summoning_MythicalSummon" Snippet="mythical mass summoning" Description="You summon strong creatures to aid you."></power>
+        <power Name="Army of Qud" Cost="300" Attribute="Ego" Minimum="15" Class="Summoning_ArmyOfQud" Snippet="mass summoning" Description="You summon several creatures at once to aid you."></power>
+        <power Name="The World" Cost="400" Attribute="Ego" Minimum="20" Class="Summoning_TheWorld" Snippet="greater mass summoning" Description="You summon a great host of temporary creatures at once to aid you."></power>
     </skill>
 </skills>

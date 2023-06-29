@@ -1,11 +1,5 @@
 ﻿using CavesOfQudMod;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XRL.World;
-using XRL.World.Parts;
 
 namespace XRL.World.Parts.Skill
 {
@@ -96,6 +90,12 @@ namespace XRL.World.Parts.Skill
                 return false;
             }
             return base.HandleEvent(E);
+        }
+
+        public override bool FinalRender(RenderEvent E, bool bAlt)
+        {
+            E.ColorString = "&c";
+            return true;
         }
     }
 }

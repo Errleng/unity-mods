@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using XRL.Core;
 using XRL.World;
-using XRL.World.Parts;
+using XRL.World.Parts.Skill;
 
 namespace CavesOfQudMod
 {
@@ -17,6 +14,18 @@ namespace CavesOfQudMod
         public PlayerPart()
         {
             followersInZone = new List<GameObject>();
+        }
+
+        private void HighlightHostiles()
+        {
+            var zone = ParentObject.CurrentCell.ParentZone;
+            foreach (var gameObject in zone.GetObjects())
+            {
+                if (gameObject.IsHostileTowards(ParentObject))
+                {
+                    gameObject.pRender.SetBackgroundColor('o');
+                }
+            }
         }
 
         public override bool WantEvent(int ID, int cascade)
@@ -35,12 +44,13 @@ namespace CavesOfQudMod
             followersInZone.Clear();
             foreach (var gameObject in zone.GetObjects())
             {
-                if (gameObject.IsPlayerLed())
+                if (gameObject.IsPlayerLed() || gameObject.HasEffect<SummonedEffect>())
                 {
                     followersInZone.Add(gameObject);
                 }
             }
             //Mod.Log($"There are {followersInZone.Count} followers in the same zone as the player");
+            HighlightHostiles();
             return base.HandleEvent(E);
         }
 
@@ -71,22 +81,13 @@ namespace CavesOfQudMod
                     Mod.Debug($"Follower {follower.DebugName} has a null ParentZone");
                     continue;
                 }
-                cell.ParentZone.AddLight(cell.X, cell.Y, 1, LightLevel.Omniscient);
+                cell.ParentZone.AddLight(cell.X, cell.Y, 2, LightLevel.Omniscient);
                 cell.ParentZone.AddLight(cell.X, cell.Y, 5);
 
                 if (follower.pRender == null)
                 {
                     Mod.Debug($"Follower {follower.DebugName} has a null pRender");
                     continue;
-                }
-
-                if (frame == 0)
-                {
-                    follower.pRender.SetBackgroundColor("b");
-                }
-                else if (frame == 10)
-                {
-                    follower.pRender.ColorString = "";
                 }
             }
 

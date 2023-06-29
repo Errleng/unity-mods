@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace XRL.World.Parts.Skill
 {
     [Serializable]
     internal class Summoning_GreaterSummon : Summoning_GenericSummon
     {
-        public override int cooldown => 400;
+        public override int cooldown => 200;
 
         public override int turnCost => 1000;
 
